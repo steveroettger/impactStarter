@@ -10,6 +10,8 @@ describe "Site pages" do
     page.should_not have_title(full_title('Home'))
     click_link "About"
     page.should have_title(full_title('About'))
+    click_link "FAQs"
+    page.should have_title(full_title('FAQs'))
     click_link "Terms"
     page.should have_title(full_title('Terms and Conditions'))
     click_link "Privacy"
@@ -37,9 +39,14 @@ describe "Site pages" do
       page.should have_title(full_title('About'))
     end
     
-    it "should have the correct heading" do
-      page.should have_selector('h1', text: 'About Us')
-    end
+  end
+  
+  describe "FAQs page" do
+      before { visit faqs_path }
+      
+      it "should have the correct title" do
+        page.should have_title(full_title('FAQs'))
+      end
   end
   
   describe "Terms page" do

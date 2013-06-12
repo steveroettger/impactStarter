@@ -21,6 +21,8 @@ $(document).ready(function(){
 		e.preventDefault();
 		$("#search-bar").slideToggle("slow");
 	});
+	
+
 });
 
   

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130524002117) do
+ActiveRecord::Schema.define(:version => 20130612202956) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -46,15 +46,27 @@ ActiveRecord::Schema.define(:version => 20130524002117) do
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
+  create_table "organizations", :force => true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "entity_type"
+    t.string   "tax_status"
+    t.string   "logo"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "projects", :force => true do |t|
-    t.string   "title",        :null => false
+    t.string   "title",                                          :null => false
     t.string   "organization"
-    t.text     "description",  :null => false
+    t.text     "description",                                    :null => false
     t.string   "image"
     t.string   "video_url"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.string   "status"
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
+    t.boolean  "status",       :limit => 255, :default => false
   end
 
   create_table "users", :force => true do |t|
@@ -72,6 +84,8 @@ ActiveRecord::Schema.define(:version => 20130524002117) do
     t.datetime "updated_at",                             :null => false
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -1,7 +1,8 @@
 ImpactStarter::Application.routes.draw do
   
   root to: 'site#home'
-  match '/about',     to: 'site#about'    
+  match '/about',     to: 'site#about'
+  match '/faqs',      to: 'site#faq'    
   match '/terms',     to: 'site#terms'
   match '/privacy',   to: 'site#privacy'
   
@@ -11,6 +12,7 @@ ImpactStarter::Application.routes.draw do
 
   #USER ROUTES
   devise_for :users
+  resources  :users
 
   #PROJECTS ROUTES
   resources :projects

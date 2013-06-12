@@ -6,10 +6,35 @@ $dkGray: #333333;
 $white: #ffffff;
 $black: #000000;
 $footer: #F0F0F0;
+$sidebar: #EDEDED;
+$error: #b94a48;
 
 /*--------------------------------------------
 FONTS
 ---------------------------------------------*/
+
+/*--------------------------------------------
+MAIN
+---------------------------------------------*/
+body { 
+	margin:0; 
+	padding:0; 
+	width:100%;
+	height:100%;
+	/*background: url('/assets/main-bkgd.png') repeat;*/
+}
+
+#wrapper {
+	margin:0; 
+	width:100%;
+	height:100%;
+	min-height:385px;
+}
+
+a:link, a:visited { 
+	color: $dkGray; 
+	&:hover { color: $dkGray; }
+}
 
 
 /*--------------------------------------------
@@ -62,7 +87,7 @@ HEADER
 						font-size:18px;
 						color:$white;
 						border-right:1px solid $dkGray;	
-						&:hover { text-decoration:none; color:$orange; background:$white; }
+						&:hover { text-decoration:none; color:$dkGray; background:$white; }
 					}
 	
 					a span.smaller { font-size:14px; }
@@ -105,6 +130,7 @@ HEADER SEARCH BAR
 	width:100%; 
 	height: 60px;
 	background:$footer;
+	border-bottom:2px solid $dkGray;
 	
 	ul {
 		margin:0 auto;
@@ -129,47 +155,36 @@ HEADER SEARCH BAR
 }
 
 /*--------------------------------------------
-MAIN
----------------------------------------------*/
-body { 
-	margin:0; 
-	padding:0; 
-	width:100%; 
-}
-
-#wrapper {
-	margin:0; 
-	width:100%;
-	height:100%;
-	min-height:425px;
-}
-
-#main-container {
-	margin:0 auto;
-	width:960px;
-	height:100%;
-	min-height:425px;
-}
-
-a:link, a:visited { 
-	color: $dkGray; 
-	&:hover { color: $dkGray; }
-}
-
-/*--------------------------------------------
 HOME
 ---------------------------------------------*/
 #home-featured {
-	margin:30px 0 30px 0;
+	margin:0;
 	position:relative;
+	width:100%; 
+	min-width:100%;
+	max-width:2500px;
+	min-height:500px;
+	max-height:500px;
+	background: url('/assets/home-main.png') no-repeat;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	border:none;
 	
 	#home-featured-bar {
-		position:absolute;
-		bottom:0;
-		left:0;
-		width:100%;
+		position:relative;
+		top:430px;
+		margin:0 auto;
+		width:960px;
 		height:70px;
 		background:$orange;
+		-webkit-border-top-left-radius: 10px;
+		-webkit-border-top-right-radius: 10px;
+		-moz-border-radius-topleft: 10px;
+		-moz-border-radius-topright: 10px;
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
 		
 		h1 {
 			position:relative;
@@ -200,13 +215,14 @@ HOME
 			text-align:center;
 			border-right:1px solid $dkGray;
 			border-left:1px solid $dkGray;
-			&:hover { text-decoration:none; color:$orange; background:$white; }
+			&:hover { text-decoration:none; color:$dkGray; }
 		}
 	}
 }
 
 #home-project-container {
-	margin:30px 0 50px 0;
+	margin:30px auto;
+	width:960px;
 	
 	.project {
 		margin:0;
@@ -284,9 +300,48 @@ HOME
 /*--------------------------------------------
 INTERIOR
 ---------------------------------------------*/
+.interior-upper {
+	margin:0;
+	width:100%; 
+	min-width:100%;
+	max-width:2500px;
+	min-height:200px;
+	max-height:200px;
+	background: url('/assets/interior-header.png') no-repeat;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	border-bottom:15px solid $orange;
+	
+	.interior-upper-content {
+		margin:0 auto;
+		padding:0;
+		width:960px;
+		
+		h1 {
+			margin:0;
+			position:relative;
+			top:65px;
+			width:750px;
+			color:$white;
+			font-size: 30px;
+			font-weight: lighter;
+			line-height:36px;
+			text-align:center;
+		}
+		
+		img {
+			position:relative;
+			top:-30px;
+		}
+	}
+}
+
 .interior-container {
-	margin:30px 0;
+	margin:30px auto;
 	position:relative;
+	width:960px;
 	
 	h1 {
 		margin: 0;
@@ -308,6 +363,109 @@ INTERIOR
 		padding:15px 20px;
 		margin:0;
 	}
+	
+	.interior-sidebar {
+		margin:0;
+		float:left;
+		width:250px;
+		
+		ul {
+			margin:0;
+			width:250px;
+			list-style: none;
+			border-top:1px solid $sidebar;
+			border-right:2px solid $sidebar;
+			border-bottom:2px solid $sidebar;
+			border-left:1px solid $sidebar;
+			
+			li { 
+				width:250px;
+				height:60px;
+				text-align:center;
+				background:$white;
+				
+				a:link, a:visited {
+					padding-top:20px;
+					display:inline-block;
+					width:250px;
+					height:40px;
+					font-size:16px;
+					border-right:1px solid #CCCCCC;
+					border-bottom:1px solid #CCCCCC;
+					&:hover { text-decoration:none; background:$sidebar; }
+				}
+			}
+		}
+	}
+	
+	.interior-content-block {
+		float:left;
+		margin-left:80px;
+		width:630px;
+		
+		#interior-slider {
+			padding:0 0 30px 0;
+		}
+		
+		h3 {
+			margin:25px 0 5px 0;
+			font-size:18px;
+			line-height:22px;
+			font-weight:lighter;
+			color: $dkGray;
+		}
+		
+		p {
+			margin:0;
+			padding:5px 0;
+			font-size:13px;
+		}
+		
+		.blockquote {
+			margin:25px 0 10px 0;
+			position:relative;
+			width:630px;
+			height:160px;
+			background:#f7f7f7;
+			border-top:1px solid $dkGray;
+			border-bottom:1px solid $dkGray;
+			
+			p {
+				margin:0 auto;
+				position:relative;
+				top:20px;
+				width:560px;
+				font-size:16px;
+				font-style:italic;
+				line-height:24px;
+				
+				span.orange {color: $orange; }
+			}
+			
+			#byline {
+				float:right;
+				position:relative;
+				top:10px;
+				right:40px;
+				font-size:16px;
+			}
+		}
+	}
+}
+
+/*--------------------------------------------
+FAQs
+---------------------------------------------*/
+.accordion {
+	position:relative;
+	top:20px;
+	
+	a:link, a:visited {
+		font-size:16px;
+		font-style:italic;
+		
+		&:hover { text-decoration:none; }
+	}
 }
 
 /*--------------------------------------------
@@ -316,11 +474,29 @@ MISC
 
 .clear { clear:both; float:none; }
 
+#error_explanation {
+	margin:0 0 10px 0;
+	max-width: 500px;
+	background: $footer;
+	border:1px solid #999999;
+	
+	h2 { 
+		padding:5px 10px;
+		font-size:22px;
+		line-height:24px;
+		color: $error;
+	}
+	
+	ul {
+		padding:0 10px;
+	}
+}
+
 /*--------------------------------------------
 FOOTER
 ---------------------------------------------*/
 #footer {
-	margin:0 auto;
+	margin:40px auto 0 auto;
 	padding:0;
 	width:100%;
 	height:150px;
