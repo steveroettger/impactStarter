@@ -33,6 +33,7 @@ gem 'simple_form'
 
 # ACTIVE ADMIN SECTION
 gem 'activeadmin'
+gem "meta_search",    '>= 1.1.0.pre'
 
 group :development, :test do
   # TESTING 

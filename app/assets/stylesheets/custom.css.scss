@@ -398,6 +398,8 @@ INTERIOR
 		}
 	}
 	
+	.interior-sidebar ul li a.active { background: $sidebar; }
+	
 	.interior-content-block {
 		float:left;
 		margin-left:80px;

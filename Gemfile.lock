@@ -238,6 +238,7 @@ DEPENDENCIES
   guard-rspec (~> 3.0.1)
   guard-spork (~> 1.5.0)
   jquery-rails
+  meta_search (>= 1.1.0.pre)
   omniauth-linkedin
   rails (= 3.2.13)
   rspec-rails (~> 2.13.2)

@@ -1,0 +1,12 @@
+<%= simple_form_for(@organization, html: { class: 'form-vertical' }) do |f| %>
+
+	<%= f.input :name %>
+	<%= f.input :address %>
+  	<%= f.input :city %>
+	<%= f.input :state %>
+	<%= f.input :entity_type, as: :select, collection: ['Sole Proprietorship', 'LLP', 'LLC', 'S Corporation', 'C Corporation'] %>
+	<%= f.input :tax_status, as: :select, collection: ['Non Profit', 'For Profit'] %>
+	<%= f.input :logo %>
+
+	<%= f.button :submit, "Submit", class: "btn" %>
+<% end %>

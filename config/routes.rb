@@ -10,11 +10,14 @@ ImpactStarter::Application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :admin_users, ActiveAdmin::Devise.config
 
-  #USER ROUTES
+  # USER ROUTES
   devise_for :users
   resources  :users
 
-  #PROJECTS ROUTES
+  # PROJECTS ROUTES
   resources :projects
-    
+  
+  # ORGANIZATIONS ROUTES
+  resources :organizations
+  
 end

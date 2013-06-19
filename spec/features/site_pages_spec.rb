@@ -39,6 +39,21 @@ describe "Site pages" do
       page.should have_title(full_title('About'))
     end
     
+    it "should have the interior header" do
+      page.should have_selector('div.interior-upper')
+    end
+    
+    it "should have working links in sidebar" do
+      click_link "what are social impact bonds"
+      page.should have_selector('div#default-content')
+      click_link "how do I start a project"
+      page.should have_selector('div#start-project')
+      click_link "how do I invest"
+      page.should have_selector('div#invest-project')
+      click_link "how do you make money"
+      page.should have_selector('div#return-project')
+    end
+    
   end
   
   describe "FAQs page" do
