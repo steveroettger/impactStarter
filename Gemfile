@@ -26,6 +26,7 @@ gem 'jquery-rails'
 
 # USER AUTHENTICATION 
 gem 'devise'
+gem 'omniauth'
 gem 'omniauth-linkedin'
 
 # SIMPLE FORM GEM
@@ -34,6 +35,10 @@ gem 'simple_form'
 # ACTIVE ADMIN SECTION
 gem 'activeadmin'
 gem "meta_search",    '>= 1.1.0.pre'
+
+# FILE UPLOADS FOR IMAGES
+gem 'rmagick'
+gem 'carrierwave'
 
 group :development, :test do
   # TESTING 

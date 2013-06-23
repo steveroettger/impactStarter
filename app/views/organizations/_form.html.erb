@@ -3,7 +3,7 @@
 	<%= f.input :name %>
 	<%= f.input :address %>
   	<%= f.input :city %>
-	<%= f.input :state %>
+	<%= f.input :state, as: :select, collection: us_states, include_blank: true %>
 	<%= f.input :entity_type, as: :select, collection: ['Sole Proprietorship', 'LLP', 'LLC', 'S Corporation', 'C Corporation'] %>
 	<%= f.input :tax_status, as: :select, collection: ['Non Profit', 'For Profit'] %>
 	<%= f.input :logo %>

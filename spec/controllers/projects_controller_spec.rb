@@ -59,14 +59,55 @@ describe ProjectsController do
     context "with invalid attributes" do
       it "does not save the new project in the database" do
         expect {
-          post :create, project: FactoryGirl.build(:project, title: "", description: "")
+          post :create, project: FactoryGirl.create(:project, title: "", description: "")
         }.to_not change(Project, :count)
       end
       
       it "re-renders the new template" do
-        post :create, project: FactoryGirl.build(:project, title: "", description: "")
+        post :create, project: FactoryGirl.create(:project, title: "", description: "")
         response.should render_template :new
       end
+    end
+  end
+  
+  describe "PUT update" do
+    before :each do
+      @project = FactoryGirl.create(:project, title: "Example Project", description: "This is a test...")
+    end
+    
+    context "with valid attributes" do
+      it "should locate the requested @project" do
+        put :update, id: @project, project: FactoryGirl.attributes_for(:project)
+        assigns(:project).should eq(@project)
+      end
+      
+      it "should update @project's attributes" do
+        put :update, id: @project, project: FactoryGirl.attributes_for(:project, title: "Test Project", description: "This is not a test...")
+        @project.reload
+        @project.title.should eq("Test Project")
+        @project.description.should eq("This is not a test...")
+      end
+      
+      it "redirects to the updated project" do
+        put :update, id: @project, project: FactoryGirl.attributes_for
+      end
+    end
+  end
+  
+  describe "DELETE destroy" do
+    before :each do
+      @project = create(:project)
+    end
+    
+    it "should delete the project" do
+      expect {
+        delete :destroy, id: @project
+      }.to change(Project, :count).by(-1)
+    end
+    
+    it "redirects to projects#index" do
+      delete :destroy, id: @project
+      response.should redirect_to projects_url
     end
   end
 end

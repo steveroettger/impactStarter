@@ -11,7 +11,7 @@ ImpactStarter::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   # USER ROUTES
-  devise_for :users
+  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   resources  :users
 
   # PROJECTS ROUTES

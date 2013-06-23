@@ -165,7 +165,7 @@ HOME
 	max-width:2500px;
 	min-height:500px;
 	max-height:500px;
-	background: url('/assets/home-main.png') no-repeat;
+	background: url('/assets/home-main-1.png') no-repeat;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -529,3 +529,8 @@ FOOTER
 		}
 	}
 }
+
+/*--------------------------------------------
+MISC
+---------------------------------------------*/
+#wrapper .alert { margin-bottom: 0px; }
