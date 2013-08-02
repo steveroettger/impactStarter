@@ -2,6 +2,7 @@
 COLORS
 ---------------------------------------------*/
 $orange: #DE6C14;
+$ltOrange: #ed8738;
 $dkGray: #333333;
 $white: #ffffff;
 $black: #000000;
@@ -12,6 +13,17 @@ $error: #b94a48;
 /*--------------------------------------------
 FONTS
 ---------------------------------------------*/
+@font-face {
+    font-family: 'chunkfive';
+    src: url('/app/assets/fonts/chunkfive-webfont.eot');
+    src: url('/app/assets/fonts/chunkfive-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/app/assets/fonts/chunkfive-webfont.woff') format('woff'),
+         url('/app/assets/fonts/chunkfive-webfont.ttf') format('truetype'),
+         url('/app/assets/fonts/chunkfive-webfont.svg#chunkfiveroman') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
 
 /*--------------------------------------------
 MAIN
@@ -172,9 +184,31 @@ HOME
 	background-size: cover;
 	border:none;
 	
+	#hero-content {
+		margin:0 auto;
+		width:960px;
+		
+		h1 {
+		 	position:relative;
+			top:130px;
+			left:30px;
+			margin:0;
+			font-family: 'chunkfive' !important;
+			font-size:60px;
+			color: $white;
+			line-height:65px;
+			text-shadow:1px 1px 1px $black;
+		}
+		
+		img {
+			position:relative;
+			top:170px;
+		}
+	}
+	
 	#home-featured-bar {
 		position:relative;
-		top:430px;
+		top:235px;
 		margin:0 auto;
 		width:960px;
 		height:70px;
@@ -293,7 +327,6 @@ HOME
 				font-size:13px;
 			}
 		}
-		
 	}
 }
 
@@ -471,27 +504,213 @@ FAQs
 }
 
 /*--------------------------------------------
-MISC
+USER PROFILE
 ---------------------------------------------*/
-
-.clear { clear:both; float:none; }
-
-#error_explanation {
-	margin:0 0 10px 0;
-	max-width: 500px;
-	background: $footer;
-	border:1px solid #999999;
+#profile-container {
+	margin:30px auto;
+	width:960px;
 	
-	h2 { 
-		padding:5px 10px;
-		font-size:22px;
-		line-height:24px;
-		color: $error;
+	#profile-main {
+		position:relative;
+		float:left;
+		
+		#profile-header {
+			width:650px;
+			height:185px;
+			background:url('/assets/profile-header-bkgd.jpg');
+
+			a.edit-link {
+				position:absolute;
+				top:5px;
+				right:10px;
+				color:$white;
+			}
+
+			img#profile-img {
+				float:left;
+				max-width:185px;
+				max-height:185px;
+				min-width:185px;
+				min-height:185px;
+			}
+
+			#profile-header-content {
+				position:relative;
+				top:10px;
+				left:25px;
+				float:left;
+				color:$white;
+
+				h1 { font-size:40px; font-weight:lighter; }
+
+				p { font-size:14px; }
+
+				p span { font-style:italic; }
+				
+				ul {
+					margin:0;
+					list-style:none;
+					
+					li {
+						display:inline;
+						
+						a img { margin-right:5px; }
+					}
+				}
+			}
+		}
+		
+		ul#profile-buttons {
+			margin:20px 0 0 0;
+			list-style:none;
+			
+			li {
+				display:inline;
+				
+				 a:link, a:visited {
+					padding-top:7px;
+					margin-right:3px;
+					width:157px;
+					height:25px;
+					display:inline-block;
+					font-size:13px;
+					text-align:center;
+					color:$white;
+					background: $orange;
+					-webkit-border-radius: 3px;
+					-moz-border-radius: 3px;
+					border-radius: 3px;
+				}
+			}
+		}
+		
+		ul#profile-buttons li a.active {
+			background: $ltOrange;
+		}
+		
+		ul#profile-buttons li a.not-active {
+			text-decoration: line-through;
+			&:hover { text-decoration: line-through; }
+		}
+		
+		.profile-block {
+			margin-top:30px;
+			width:100%;
+			background: #F7F7F7;
+			border-top:1px solid #EDEDED;
+			border-right:2px solid #EDEDED;
+			border-bottom:2px solid #EDEDED;
+			border-left:1px solid #EDEDED;
+			
+			.profile-block-content {
+				max-width:650px;
+				
+				h3 {
+					margin:0;
+					padding:15px 20px 5px 20px;
+					font-size:22px;
+					line-height:24px;
+					font-weight:lighter;
+					color:$dkGray;
+				}
+				
+				hr {
+					margin:8px 0;
+					border: 0;
+				    height: 1px;
+					background:#CCCCCC;
+				}
+				
+				.activity {
+					padding:15px 20px 15px 20px; 
+					border-bottom:1px solid #CCCCCC;
+					
+					a:link, a:visited {
+						color:$orange;
+					}
+					
+					span.time { font-size:12px; color: #AAA; }
+				}
+			}
+		}
 	}
 	
-	ul {
-		padding:0 10px;
+	#profile-sidebar {
+		position:relative;
+		left:60px;
+		margin:0;
+		float:left;
+		padding:20px;
+		width:210px;
+		height:auto;
+		background: #F7F7F7;
+		border-top:1px solid #EDEDED;
+		border-right:2px solid #EDEDED;
+		border-bottom:2px solid #EDEDED;
+		border-left:1px solid #EDEDED;
+		
+		h2 {
+			margin:0;
+			font-size:18px;
+			font-weight:lighter;
+			color: $dkGray;
+			text-decoration:underline;
+		}
+		
+		ul {
+			margin:0;
+			list-style:none;
+			
+			li {
+				margin-bottom:8px;
+				display:inline-block;
+				
+				a:link, a:visited {
+					position:relative;
+					top:3px;
+					left:10px;
+					font-size:12px;
+					color:$dkGray;
+		
+				}
+				
+				img {
+					max-width:30px;
+					max-height:30px;
+					min-width:30px;
+					min-height:30px;
+				}
+			}
+		}
 	}
+}
+
+ul#profile-edit {
+	margin:20px 0 20px 0;
+	list-style:none;
+	
+	li {
+		display:inline;
+		
+		 a:link, a:visited {
+			padding-top:7px;
+			margin-right:3px;
+			width:157px;
+			height:25px;
+			display:inline-block;
+			font-size:13px;
+			text-align:center;
+			color:$white;
+			background: $orange;
+			-webkit-border-radius: 3px;
+			-moz-border-radius: 3px;
+			border-radius: 3px;
+		}
+	}
+}
+
+ul#profile-edit li a.active {
+	background: $ltOrange;
 }
 
 /*--------------------------------------------
@@ -531,6 +750,65 @@ FOOTER
 }
 
 /*--------------------------------------------
+GENERAL FORM STYLES
+---------------------------------------------*/
+input.string {
+	width:300px;
+	min-width:300px;
+	max-width:300px;	
+}
+
+textarea.text {
+	width:300px;
+	min-width:300px;
+	max-width:300px;
+	height: 50px;
+	min-height: 50px;
+	max-height: 200px;
+}
+
+/*--------------------------------------------
 MISC
 ---------------------------------------------*/
 #wrapper .alert { margin-bottom: 0px; }
+
+.clear { clear:both; float:none; }
+
+.hide { display: none; }
+
+#error_explanation {
+	margin:0 0 10px 0;
+	max-width: 500px;
+	background: $footer;
+	border:1px solid #999999;
+	
+	h2 { 
+		padding:5px 10px;
+		font-size:22px;
+		line-height:24px;
+		color: $error;
+	}
+	
+	ul {
+		padding:0 10px;
+	}
+}
+
+input[type="submit"].follow-btn {
+	position:absolute;
+	top:90px;
+	right:20px;
+	padding-top:5px;
+	width:157px;
+	height:32px;
+	display:inline-block;
+	font-size:13px;
+	text-align:center;
+	color:$white;
+	background: $orange;
+	border:none;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	&:hover { text-decoration:none; background:$ltOrange; }
+}

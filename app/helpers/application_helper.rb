@@ -10,6 +10,7 @@ module ApplicationHelper
     end
   end
   
+  # List of the states for forms
   def us_states
       [
         ['Alabama', 'AL'],

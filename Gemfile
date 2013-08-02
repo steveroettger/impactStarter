@@ -29,8 +29,14 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-linkedin'
 
+# USER ACTIVITY w/ PUBLIC ACTIVITY
+gem 'public_activity'
+
 # SIMPLE FORM GEM
 gem 'simple_form'
+
+# HANDLING NESTED FORM FIELDS 
+gem "cocoon"
 
 # ACTIVE ADMIN SECTION
 gem 'activeadmin'

@@ -1,8 +1,16 @@
 <%= simple_form_for(@project, html: { multipart: true, class: 'form-vertical' }) do |f| %>
 
 	<%= f.input :title %>
-	<%= f.input :organization %>
   	<%= f.input :description %>
+	<h4>Project Objectives</h4>
+	<div id="tasks">
+		<%= f.simple_fields_for :objectives do |objective| %>
+			<%= render 'objective_fields', f: objective %>
+		<% end %>
+	</div>
+	<div class="links">
+		<%= link_to_add_association "Add Objective Field", f, :objectives %>
+	</div>
 	<%= f.input :image, as: :file %>
 	<%= f.input :video_url %>
 	

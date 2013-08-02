@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_filter :auth_user, only: [:new, :edit, :update, :destroy]
   
   def index
     @projects = Project.all
@@ -20,6 +21,7 @@ class ProjectsController < ApplicationController
   
   def new
     @project = Project.new
+    3.times { @project.objectives.build }
     
     respond_to do |format|
       format.html # new.html.erb
@@ -42,7 +44,7 @@ class ProjectsController < ApplicationController
   end
   
   def edit
-    @project = Project.find(params[:project])
+    @project = Project.find(params[:id])
     
     respond_to do |format|
       format.html # edit.html.erb
@@ -51,7 +53,7 @@ class ProjectsController < ApplicationController
   end
   
   def update
-    @project = Project.find(params[:project])
+    @project = Project.find(params[:id])
     
     respond_to do |format|
       if @project.update_attributes(params[:project])

@@ -1,0 +1,38 @@
+<ul id="profile-edit">
+  <li><a href="#" id="settings" class="active">Account Settings</a></li>
+  <li><a href="#" id="details">Profile Details</a></li>
+</ul>
+ 
+<div id="profile-edit-content">
+  <div id="profile-settings">
+  	<%= simple_form_for(@user, html: { multipart: true, class: 'form-vertical' }) do |f| %>
+
+		<%= f.input :first_name %>
+		<%= f.input :last_name %>
+		<%= f.input :email %>
+		<%= f.input :password %>
+		<%= f.input :password_confirmation %>
+		<%= f.input :current_password %>
+		<i>(we need your current password to confirm your changes)</i><br>
+
+		<%= f.button :submit, "Update", class: "btn" %>
+	<% end %>
+  </div>
+  
+  <div id="profile-details" style="display:none;">
+  	<%= simple_form_for(@user, html: { multipart: true, class: 'form-vertical' }) do |f| %>
+
+		<%= f.input :headline %>
+		<%= f.input :location %>
+		<%= f.input :linkedin, label: 'LinkedIn url' %>
+		<%= f.input :facebook, label: 'Facebook url' %>
+		<%= f.input :twitter, label: 'Twitter url' %>
+		<% if @user.image? %>
+			<%= image_tag @user.image_url, style: 'max-width:185px; max-height:185px;' %>
+		<% end %>
+		<%= f.input :image, as: :file, label: 'Add new image' %>
+		
+		<%= f.button :submit, 'Update', class: 'btn' %>
+	<% end %>
+  </div>
+</div>

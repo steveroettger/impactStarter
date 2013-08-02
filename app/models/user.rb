@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -6,7 +7,18 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :remember_me, :headline, :photo, :location
+  attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :remember_me, 
+                  :headline, :image, :location, :linkedin, :facebook, :twitter
+  
+  #RELATIONSHIPS
+  has_many :projects, dependent: :destroy
+  has_many :relationships, foreign_key: "follower_id", dependent: :destroy
+  has_many :followed_users, through: :relationships, source: :followed
+  has_many :reverse_relationships, foreign_key: "followed_id", class_name: "Relationship", dependent: :destroy
+  has_many :followers, through: :reverse_relationships, source: :follower
+  
+  # UPLOADER FOR USER PIC
+  mount_uploader :image, ImageUploader
   
   # CREATE A METHOD TO PRINT OUT FULL NAME OF USER
   def full_name
@@ -24,6 +36,7 @@ class User < ActiveRecord::Base
       user.headline = auth.info.headline
       user.photo = auth.info.picture_url
       user.location = auth.info.location
+      user.linkedin = auth.info.public_profile_url
     end
   end
 
@@ -50,4 +63,17 @@ class User < ActiveRecord::Base
     end
   end
   
+  # FOLLOWING / FOLLOWER LOGIC
+  def following?(other_user)
+    relationships.find_by_followed_id(other_user.id)
+  end  
+      
+  def follow!(other_user)
+    relationships.create!(followed_id: other_user.id)
+  end
+      
+  def unfollow!(other_user)
+    relationships.find_by_followed_id(other_user.id).destroy
+  end
+
 end

@@ -1,5 +1,7 @@
 ImpactStarter::Application.routes.draw do
   
+  get "activities/index"
+
   root to: 'site#home'
   match '/about',     to: 'site#about'
   match '/faqs',      to: 'site#faq'    
@@ -12,12 +14,22 @@ ImpactStarter::Application.routes.draw do
 
   # USER ROUTES
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
-  resources  :users
+  resources  :users do
+    member do
+     get :following, :followers 
+    end
+  end
 
   # PROJECTS ROUTES
   resources :projects
   
   # ORGANIZATIONS ROUTES
   resources :organizations
+  
+  # RELATIONSHIPS
+  resources :relationships, only: [:create, :destroy]
+  
+  # PUBLIC ACTIVITY
+  resources :activities
   
 end

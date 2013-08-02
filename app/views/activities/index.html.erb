@@ -1,0 +1,9 @@
+<h1>Activities:</h1>
+
+<% @activities.each do |activity| %>
+	<div class="activity">
+		<%# activity.inspect %>
+		<%= link_to activity.owner.full_name, activity.owner if activity.owner %>
+		followed <%= link_to activity.trackable.activity_recipient, activity.trackable %>
+	</div>
+<% end %>

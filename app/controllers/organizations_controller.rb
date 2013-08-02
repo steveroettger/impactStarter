@@ -42,7 +42,7 @@ class OrganizationsController < ApplicationController
   end
   
   def edit
-    @organization = Organization.find(params[:organization])
+    @organization = Organization.find(params[:id])
     
     respond_to do |format|
       format.html # edit.html.erb
@@ -51,7 +51,7 @@ class OrganizationsController < ApplicationController
   end
   
   def update
-    @organization = Organization.find(params[:organization])
+    @organization = Organization.find(params[:id])
     
     respond_to do |format|
       if @organization.update_attributes(params[:organization])

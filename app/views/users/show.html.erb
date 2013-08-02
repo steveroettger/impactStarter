@@ -1,0 +1,131 @@
+<div id="profile-container">
+	
+	<div id="profile-main">
+		<div id="profile-header">
+			<% if @user == current_user %>
+				<%= link_to "[ edit ]", edit_user_path(current_user), class: "edit-link" %>
+			<% end %>
+
+			<% if @user.image? %>
+				<img src="<%= @user.image %>" alt="<%= @user.full_name %>" width="185" height="185" id="profile-img" />
+			<% else %>
+				<img src="http://placehold.it/185x185" alt="<%= @user.full_name %>" width="185" height="185" id="profile-img" />
+			<% end %>
+
+			<div id="profile-header-content">
+				<h1><%= @user.full_name %></h1>
+				<p><span><%= @user.headline %></span></p>
+				<p><%= @user.location %></p>
+				<ul>
+					<li><a href="<%= @user.linkedin %>" target="blank"><img src="/assets/linkedin.jpg" /></a></li>
+					<li><a href="<%= @user.twitter %>" target="blank"><img src="/assets/twitter.jpg" /></a></li>
+					<li><a href="<%= @user.facebook %>" target="blank"><img src="/assets/facebook.jpg" /></a></li>
+				</ul>
+			</div>
+
+			<div class="clear"></div>
+			
+			<% unless current_user == @user %>
+			<div id="follow-form">
+				<% if current_user.following?(@user) %>
+			   		<%= render 'unfollow' %>
+			 	<% else %>
+			    	<%= render 'follow' %>
+			  	<% end %>
+			</div>
+			<% end %>
+		</div><!-- END #profile-header -->
+		
+		<ul id="profile-buttons">
+			<li><a href="#" id="profile-overview" class="active">overview</a></li>
+			<li><a href="#" id="profile-activity">activity</a></li>
+			<% if @user != current_user %>
+				<% if @user.following?(current_user) %>
+					<li><a href="mailto:<%= @user.email %>">message me</a></li>
+				<% else %>
+					<li><a href="#" class="not-active" rel="tooltip" data-placement="right" title="You cannot message <%= @user.full_name %>.">message me</a></li>
+				<% end %>
+			<% end %>
+		</ul><!-- END #profile-buttons -->
+			
+		<div id="overview">
+			<div id="projects-overview">
+				<div class="profile-block">
+					<div class="profile-block-content">
+						<h3><%= @user.first_name %>'s Projects</h3>
+						<hr>
+					</div>
+				</div>
+			</div>
+			
+			<div id="organizations-overview">
+				<div class="profile-block">
+					<div class="profile-block-content">
+						<h3><%= @user.first_name %>'s Organizations</h3>
+						<hr>
+					</div>
+				</div>
+			</div>
+		</div><!-- END #overview -->
+		
+		<div id="activity" class="hide">
+			<div class="profile-block">
+				<div class="profile-block-content">
+					<h3><%= @user.first_name %>'s Activity</h3>
+					<hr>
+					<% @activities.each do |activity| %>
+						<% if @user == activity.owner %>
+						<div class="activity">
+							<%= render_activity activity %>
+							<br/>
+							<span class="time"><%= time_ago_in_words(activity.created_at) %> ago</span>
+						</div>
+						<% end %>
+					<% end %>
+				</div>
+			</div>
+		</div><!-- END #activity -->
+		
+	</div><!-- END #profile-main -->
+		
+	<div id="profile-sidebar">
+		
+		<h2><a href="<%= following_user_path(@user) %>">Following (<%= @user.followed_users.count %>)</a></h2>
+		<ul>
+			<% @user.followed_users.first(5).each do |user| %>
+				<% if user.image? %>
+					<li>
+						<img src="<%= user.image %>" align="left" alt="<%= user.full_name %>">
+						<a href="<%= user_path(user) %>"><%= user.full_name %></a>
+					</li>
+				<% else %>
+					<li>
+						<img src="http://placehold.it/30x30" align="left" alt="<%= user.full_name %>">
+						<a href="<%= user_path(user) %>"><%= user.full_name %></a>
+					</li>
+				<% end %>
+			<% end %>
+			
+		</ul>
+		
+		<h2><a href="<%= followers_user_path(@user) %>">Followers (<span id="followers"><%= @user.followers.count %></span>)</a></h2>
+		<ul>
+			<% @user.followers.first(5).each do |user| %>
+				<% if user.image? %>
+					<li>
+						<img src="<%= user.image %>" align="left" alt="<%= user.full_name %>">
+						<a href="<%= user_path(user) %>"><%= user.full_name %></a>
+					</li>
+				<% else %>
+					<li>
+						<img src="http://placehold.it/30x30" align="left" alt="<%= user.full_name %>">
+						<a href="<%= user_path(user) %>"><%= user.full_name %></a>
+					</li>
+				<% end %>
+			<% end %>
+		</ul>
+
+	</div><!-- END #profile-sidebar --> 
+	
+</div><!-- END #profile-container -->
+

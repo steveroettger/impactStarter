@@ -12,12 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
-//= require bootstrap
 //= require_tree .
+//= require twitter/bootstrap
+//= require cocoon
 
 $(document).ready(function(){
-	
+
 	// DROPDOWN SEARCH BAR
 	$("#search-btn").click(function(e){
 		e.preventDefault();
@@ -81,7 +81,47 @@ $(document).ready(function(){
 		return false;
 	});
 	
-
+	// USER PROFILE TOGGLE BETWEEN 'overview' AND 'activity'
+	$('a#profile-overview').click(function(){
+		$('a#profile-overview').addClass('active');
+		$('a#profile-activity').removeClass('active');
+		
+		$('#overview').show();
+		$('#activity').hide();
+		
+		return false;
+	});
+	
+	$('a#profile-activity').click(function(){
+		$('a#profile-overview').removeClass('active');
+		$('a#profile-activity').addClass('active');
+		
+		$('#overview').hide();
+		$('#activity').show();
+		
+		return false;
+	});
+	
+	// USER PROFILE EDIT 'account settings' AND 'profile-details'
+	$('a#settings').click(function(){
+		$('a#settings').addClass('active');
+		$('a#details').removeClass('active');
+		
+		$('#profile-settings').show();
+		$('#profile-details').hide();
+		
+		return false;
+	});
+	
+	$('a#details').click(function(){
+		$('a#settings').removeClass('active');
+		$('a#details').addClass('active');
+		
+		$('#profile-settings').hide();
+		$('#profile-details').show();
+		
+		return false;
+	});
 });
 
   
