@@ -102,8 +102,7 @@ HEADER
 						&:hover { text-decoration:none; color:$dkGray; background:$white; }
 					}
 	
-					a span.smaller { font-size:14px; }
-					a.border { border-left:1px solid $dkGray; }				
+					a span.smaller { font-size:14px; }			
 				}
 			}
 		}
@@ -358,8 +357,8 @@ INTERIOR
 			top:65px;
 			width:750px;
 			color:$white;
-			font-size: 30px;
-			font-weight: lighter;
+			font-family: 'chunkfive' !important;
+			font-size: 24px;
 			line-height:36px;
 			text-align:center;
 		}
@@ -621,6 +620,18 @@ USER PROFILE
 					background:#CCCCCC;
 				}
 				
+				.profile-projects {
+					padding:15px 20px 15px 20px; 
+					border-bottom:1px solid #CCCCCC;
+					
+					h4 a, h4 a:visited {
+						margin:5px 0;
+						color:$orange;
+						font-weight:lighter;
+						font-style:italic;
+					}
+				}
+				
 				.activity {
 					padding:15px 20px 15px 20px; 
 					border-bottom:1px solid #CCCCCC;
@@ -714,6 +725,85 @@ ul#profile-edit li a.active {
 }
 
 /*--------------------------------------------
+PROJECT STYLES
+---------------------------------------------*/
+.project-upper {
+	margin:0;
+	width:100%; 
+	min-width:100%;
+	max-width:2500px;
+	min-height:200px;
+	max-height:200px;
+	background: url('/assets/interior-header.png') no-repeat;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	
+	.project-upper-content {
+		margin:0 auto;
+		padding:0;
+		width:960px;
+		
+		h1 {
+			margin:0;
+			position:relative;
+			top:80px;
+			width:750px;
+			color:$white;
+			font-family: 'chunkfive' !important;
+			font-size: 26px;
+			line-height:32px;
+			text-align:center;
+		}
+		
+		img {
+			position:relative;
+			top:0px;
+		}
+	}
+}
+
+.project-upper-bar {
+	margin:0;
+	width:100%;
+	height:50px;
+	background: $orange;
+	
+	.project-upper-bar-content {
+		margin:0 auto;
+		width:960px;
+		height:50px;
+		
+		ul#upper-bar-nav {
+			float:left;
+			list-style:none;
+			
+			li {
+				margin:0 -4px 0 0;
+				display:inline;
+				width:150px;
+				height:50px;
+				text-align:center;
+				
+				
+				a, a:visited {
+					padding-top:15px;
+					display:inline-block;
+					width:150px;
+					height:35px;
+					color:$white;
+					font-size:15px;
+					border-right:1px solid $dkGray;
+				}
+			}
+		}
+	}
+}
+
+
+
+/*--------------------------------------------
 FOOTER
 ---------------------------------------------*/
 #footer {
@@ -775,6 +865,8 @@ MISC
 .clear { clear:both; float:none; }
 
 .hide { display: none; }
+
+a.border { border-left:1px solid $dkGray; }	
 
 #error_explanation {
 	margin:0 0 10px 0;

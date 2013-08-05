@@ -10,14 +10,14 @@ ActiveAdmin.register Project do
   filter :status, as: :select, collection: ['Pending', 'Published']
   
   # PROJECTS INDEX PAGE
-  index do
-    column :title do
-      link_to project.title, admin_project_path(project)
-    end
-    column :description
+  #index do
+  #  column :title do
+  #    link_to project.title, admin_project_path(project)
+  #  end
+  #  column :description
     
-    default_actions
-  end
+  #  default_actions
+  #end
   
   # PROJECTS NEW/EDIT FORM
   form do |f|

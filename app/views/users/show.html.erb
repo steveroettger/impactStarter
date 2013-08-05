@@ -1,3 +1,5 @@
+<% provide(:title, @user.full_name) %>
+
 <div id="profile-container">
 	
 	<div id="profile-main">
@@ -21,7 +23,7 @@
 					<li><a href="<%= @user.twitter %>" target="blank"><img src="/assets/twitter.jpg" /></a></li>
 					<li><a href="<%= @user.facebook %>" target="blank"><img src="/assets/facebook.jpg" /></a></li>
 				</ul>
-			</div>
+			</div><!-- END #profile-header-content -->
 
 			<div class="clear"></div>
 			
@@ -32,7 +34,7 @@
 			 	<% else %>
 			    	<%= render 'follow' %>
 			  	<% end %>
-			</div>
+			</div><!-- END #follow-form -->
 			<% end %>
 		</div><!-- END #profile-header -->
 		
@@ -54,18 +56,28 @@
 					<div class="profile-block-content">
 						<h3><%= @user.first_name %>'s Projects</h3>
 						<hr>
-					</div>
-				</div>
-			</div>
+						<div class="profile-projects">
+							<% if @user.projects.count >= 1 %>
+								<% @user.projects.each do |project| %>
+									<h4><%= link_to project.title, project %></h4>
+									<p><%= project.description %></p>
+								<% end %>
+							<% else %>
+								<%= @user.first_name %> is not currently involved in any projects.
+							<% end %>
+						</div><!-- END .profile-projects -->
+					</div><!-- END .profile-block-content -->
+				</div><!-- END .profile-block -->
+			</div><!-- END #projects-overview  -->
 			
 			<div id="organizations-overview">
 				<div class="profile-block">
 					<div class="profile-block-content">
 						<h3><%= @user.first_name %>'s Organizations</h3>
 						<hr>
-					</div>
-				</div>
-			</div>
+					</div><!-- END .profile-block-content -->
+				</div><!-- END .profile-block -->
+			</div><!-- END #organizations-overview -->
 		</div><!-- END #overview -->
 		
 		<div id="activity" class="hide">
@@ -79,11 +91,11 @@
 							<%= render_activity activity %>
 							<br/>
 							<span class="time"><%= time_ago_in_words(activity.created_at) %> ago</span>
-						</div>
+						</div><!-- END .activity -->
 						<% end %>
 					<% end %>
-				</div>
-			</div>
+				</div><!-- END .profile-block-container -->
+			</div><!-- END .profile-block -->
 		</div><!-- END #activity -->
 		
 	</div><!-- END #profile-main -->

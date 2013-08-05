@@ -9,11 +9,10 @@
 		<% end %>
 	</div>
 	<div class="links">
-		<%= link_to_add_association "Add Objective Field", f, :objectives %>
+		<%= link_to_add_association "Add Objective", f, :objectives, class: "btn" %>
 	</div>
 	<%= f.input :image, as: :file %>
 	<%= f.input :video_url %>
-	
 
 	<%= f.button :submit, "Submit", class: "btn" %>
 <% end %>

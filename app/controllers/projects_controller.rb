@@ -21,7 +21,7 @@ class ProjectsController < ApplicationController
   
   def new
     @project = Project.new
-    3.times { @project.objectives.build }
+    #3.times { @project.objectives.build }
     
     respond_to do |format|
       format.html # new.html.erb
@@ -30,7 +30,7 @@ class ProjectsController < ApplicationController
   end
   
   def create
-    @project = Project.new(params[:project])
+    @project = current_user.projects.build(params[:project])
     
     respond_to do |format|
       if @project.save
