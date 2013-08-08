@@ -21,7 +21,8 @@ class ProjectsController < ApplicationController
   
   def new
     @project = Project.new
-    #3.times { @project.objectives.build }
+    3.times { @project.objectives.build }
+    3.times { @project.tags.build }
     
     respond_to do |format|
       format.html # new.html.erb

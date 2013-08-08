@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130801175135) do
+ActiveRecord::Schema.define(:version => 20130808150152) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -84,15 +84,17 @@ ActiveRecord::Schema.define(:version => 20130801175135) do
   end
 
   create_table "projects", :force => true do |t|
-    t.string   "title",                               :null => false
+    t.string   "title",                                 :null => false
     t.string   "organization"
-    t.text     "description",                         :null => false
+    t.text     "description",                           :null => false
     t.string   "image"
     t.string   "video_url"
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
-    t.string   "status",       :default => "Pending"
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
+    t.string   "status",         :default => "Pending"
     t.integer  "user_id"
+    t.string   "seeking_amount"
+    t.string   "funded_amount"
   end
 
   create_table "relationships", :force => true do |t|
@@ -105,6 +107,13 @@ ActiveRecord::Schema.define(:version => 20130801175135) do
   add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"
   add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
   add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
+
+  create_table "tags", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "project_id"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -129,6 +138,7 @@ ActiveRecord::Schema.define(:version => 20130801175135) do
     t.string   "linkedin"
     t.string   "facebook"
     t.string   "twitter"
+    t.text     "bio"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

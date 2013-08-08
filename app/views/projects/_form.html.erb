@@ -1,19 +1,61 @@
-<%= simple_form_for(@project, html: { multipart: true, class: 'form-vertical' }) do |f| %>
+<ul id="project-form-tabs">
+	<li><a href="#" id="details" class="active">Project Details</a></li>
+	<li><a href="#" id="objectives">Project Objectives</a></li>
+	<li><a href="#" id="tags">Project Tags</a></li>
+	<li><a href="#" id="team">Project Team</a></li>
+</ul><!-- END #project-form-tabs -->
 
-	<%= f.input :title %>
-  	<%= f.input :description %>
-	<h4>Project Objectives</h4>
-	<div id="tasks">
-		<%= f.simple_fields_for :objectives do |objective| %>
-			<%= render 'objective_fields', f: objective %>
+<div id="project-form-container">
+	<div id="project-form-details">
+		<%= simple_form_for(@project, html: { multipart: true, class: 'form-vertical' }) do |f| %>
+			<%= f.input :title %>
+			<%= f.input :seeking_amount, label: "Seeking Amount" %>
+			<%= f.input :funded_amount, label: "Funded Amount To-Date" %>
+		  	<%= f.input :description, as: :ckeditor, :input_html => { :ckeditor => {:width => '800', :toolbar => 'full' } } %>
+			<%= f.input :image, as: :file %>
+			<%= f.input :video_url, label: "Video URL" %>
+
+			<%= f.button :submit, "Submit", class: "btn" %>
 		<% end %>
-	</div>
-	<div class="links">
-		<%= link_to_add_association "Add Objective", f, :objectives, class: "btn" %>
-	</div>
-	<%= f.input :image, as: :file %>
-	<%= f.input :video_url %>
+	</div><!-- END #project-form-details -->
 
-	<%= f.button :submit, "Submit", class: "btn" %>
-<% end %>
+	<div id="project-form-objectives" style="display:none;">
+		<h4>Project Objectives</h4>
+		<%= simple_form_for(@project, html: { multipart: true, class: 'form-vertical' }) do |f| %>
+			<div id="objectives">
+				<%= f.simple_fields_for :objectives do |objective| %>
+					<%= render 'objective_fields', f: objective %>
+				<% end %>
+			</div>
+			<div class="links">
+				<%= link_to_add_association "Add Objective", f, :objectives, class: "btn" %>
+			</div>
+			<%= f.button :submit, "Submit", class: "btn" %>
+		<% end %>
+	</div><!-- END #project-form-objectives -->
+
+	<div id="project-form-tags" style="display:none;">
+		<h4>Project Tags</h4>
+		<%= simple_form_for(@project, html: { multipart: true, class: 'form-vertical' }) do |f| %>
+			<div id="tags">
+				<%= f.simple_fields_for :tags do |tag| %>
+					<%= render 'tag_fields', f: tag %>
+				<% end %>
+			</div>
+			<div class="links">
+				<%= link_to_add_association "Add Tag", f, :tags, class: "btn" %>
+			</div>
+			<%= f.button :submit, "Submit", class: "btn" %>
+		<% end %>
+	</div><!-- END #project-form-tags -->
+
+	<div id="project-form-team" style="display:none;">
+
+	</div><!-- END #project-form-team -->
+</div><!-- END #project-form-container -->
+
+	
+	
+	
+	
 

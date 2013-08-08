@@ -1,7 +1,7 @@
 <ul id="profile-edit">
   <li><a href="#" id="settings" class="active">Account Settings</a></li>
   <li><a href="#" id="details">Profile Details</a></li>
-</ul>
+</ul><!-- END #profile-edit -->
  
 <div id="profile-edit-content">
   <div id="profile-settings">
@@ -17,12 +17,13 @@
 
 		<%= f.button :submit, "Update", class: "btn" %>
 	<% end %>
-  </div>
+  </div><!-- END #profile-settings -->
   
   <div id="profile-details" style="display:none;">
   	<%= simple_form_for(@user, html: { multipart: true, class: 'form-vertical' }) do |f| %>
 
 		<%= f.input :headline %>
+		<%= f.input :bio, as: :ckeditor, :input_html => { :ckeditor => {:width => '800', :toolbar => 'full' } } %>
 		<%= f.input :location %>
 		<%= f.input :linkedin, label: 'LinkedIn url' %>
 		<%= f.input :facebook, label: 'Facebook url' %>
@@ -34,5 +35,7 @@
 		
 		<%= f.button :submit, 'Update', class: 'btn' %>
 	<% end %>
-  </div>
-</div>
+  </div><!-- END #profile-details -->
+</div><!-- END #profile-edit-content -->
+
+

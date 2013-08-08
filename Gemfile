@@ -35,6 +35,12 @@ gem 'public_activity'
 # SIMPLE FORM GEM
 gem 'simple_form'
 
+# CKEDITOR WYSIWYG EDITOR
+gem 'ckeditor'
+
+# TRUNCATE_HTML GEM
+gem 'truncate_html'
+
 # HANDLING NESTED FORM FIELDS 
 gem "cocoon"
 

@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :remember_me, 
-                  :headline, :image, :location, :linkedin, :facebook, :twitter
+                  :headline, :image, :location, :linkedin, :facebook, :twitter, :bio
   
   #RELATIONSHIPS
   has_many :projects, dependent: :destroy

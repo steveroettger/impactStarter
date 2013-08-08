@@ -4,6 +4,7 @@ COLORS
 $orange: #DE6C14;
 $ltOrange: #ed8738;
 $dkGray: #333333;
+$ltGray: #CCCCCC;
 $white: #ffffff;
 $black: #000000;
 $footer: #F0F0F0;
@@ -620,6 +621,10 @@ USER PROFILE
 					background:#CCCCCC;
 				}
 				
+				.profile-bio {
+					padding:15px 20px 15px 20px;
+				}
+				
 				.profile-projects {
 					padding:15px 20px 15px 20px; 
 					border-bottom:1px solid #CCCCCC;
@@ -801,7 +806,246 @@ PROJECT STYLES
 	}
 }
 
+#project-container {
+	margin:0;
+	width:100%;
+	height:auto;
+	
+	#project-container-content {
+		margin:30px auto;
+		width: 960px;
+		min-height:110px;
+		
+		#project-main {
+			float:left;
+			width:590px;
+			
+			#project-video {}
 
+			#project-funding {
+				position:relative; 
+				top:30px;
+				margin-bottom:30px;
+			}
+
+
+			.project-block {
+				float:left;
+				padding:15px;
+				width:560px;
+				height:auto;
+				background: #F7F7F7;
+				border-top:1px solid #EDEDED;
+				border-right:2px solid #EDEDED;
+				border-bottom:2px solid #EDEDED;
+				border-left:1px solid #EDEDED;
+
+				h1 {
+					margin:0;
+					padding:0;
+					color:$dkGray;
+					font-size:28px;
+					font-weight:lighter;
+				}
+
+				#project-video {
+					margin:15px 0;
+				}
+
+				h2 {
+					color:$dkGray;
+					font-size:22px;
+					font-weight:lighter;
+					line-height:24px;
+				}
+
+				.project-description {
+					padding-bottom:20px;
+					font-size:13px;
+					color:$dkGray;
+				}
+				
+				#funding-diagram {
+					margin:20px 0;
+					padding:0;
+					width:560px;
+					height:auto;
+					
+					.funding-box {
+						float:left;
+						width:160px;
+						height:140px;
+						background:$ltGray;
+						
+						h5 {	
+							margin:0;
+							padding:8px 0 0 10px;
+							font-size:12px;
+							text-decoration:underline;
+						}
+						
+						h2 {
+							position:relative;
+							top:25px;
+							font-size:38px;
+							font-weight:bolder;
+							text-align:center;
+						}
+					}
+					
+					h3 {
+						position:relative;
+						top:50px;
+						padding:0 8px;
+						float:left;
+						font-size:20px;
+					}
+					
+					ul#tag-list {
+						margin:0;
+						padding:8px;
+						
+						li {
+							margin-bottom:8px;
+							display:inline-block;
+							
+							a, a:visited {
+								padding:5px;
+								font-size:11px;
+								color:$white;
+								background:$dkGray;
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		#project-sidebar {
+			position:relative;
+			left:40px;
+			float:left;
+			width:330px;
+
+			#project-founders {}
+			
+			#project-objectives {
+				position:relative;
+				top:30px;
+			}
+			
+			.project-sidebar-block {
+				float:left;
+				padding:15px;
+				width:300px;
+				height:auto;
+				background: #F7F7F7;
+				border-top:1px solid #EDEDED;
+				border-right:2px solid #EDEDED;
+				border-bottom:2px solid #EDEDED;
+				border-left:1px solid #EDEDED;
+				
+				h3 {
+					font-size:18px;
+					font-weight:lighter;
+					color:$dkGray;
+					line-height:20px;
+				}
+				
+				.founder-image {
+					margin-right:10px;
+					border-top:1px solid #EDEDED;
+					border-right:2px solid #EDEDED;
+					border-bottom:2px solid #EDEDED;
+					border-left:1px solid #EDEDED;
+				}
+				
+				ol {
+					margin:0;
+					padding:0 0 25px 0;
+					counter-reset: li; /* Initiate a counter */
+					list-style: none; /* Remove default numbering */
+					*list-style: decimal; /* Keep using default numbering for IE6/7 */
+					
+					li {
+						padding:3px 0 0 0;
+						border-bottom:4px solid $ltGray;
+					}
+				}
+
+				.objectives-list p {
+					position: relative;
+					display: block;
+					padding: 5px 5px 5px 35px;
+					*padding: 5px;
+					margin: 8px 0;
+					font-size:13px;
+					color: $dkGray;
+				}
+
+				.objectives-list p:before{
+					content: counter(li);
+					counter-increment: li;
+					position: absolute;	
+					left: -.3em;
+					top: 50%;
+					margin-top: -1.1em;
+					background: $orange;
+					height: 2em;
+					width: 2em;
+					color:$white;
+					line-height: 2em;
+					font-size:16px;
+					text-align: center;
+					font-weight: bold;
+					border-radius: 2em;
+					transition: all .3s ease-out;
+				}
+			}
+		}	
+	}
+}
+
+ul#project-form-tabs {
+	margin:20px 0 0 0;
+	list-style:none;
+
+	li {
+		display:inline;
+
+		 a:link, a:visited {
+			padding-top:7px;
+			margin-right:3px;
+			width:157px;
+			height:25px;
+			display:inline-block;
+			font-size:13px;
+			text-align:center;
+			color:$white;
+			background: $orange;
+			-webkit-border-radius: 3px;
+			-moz-border-radius: 3px;
+			border-radius: 3px;
+		}
+	}
+}
+
+ul#project-form-tabs li a.active {
+	background: $ltOrange;
+}
+
+ul#project-form-tabs li a.not-active {
+	text-decoration: line-through;
+	&:hover { text-decoration: line-through; }
+}
+
+#project-form-container {
+	margin-top:20px;
+	
+	.links {
+		margin-bottom:20px;
+	}
+}
 
 /*--------------------------------------------
 FOOTER
@@ -843,15 +1087,15 @@ FOOTER
 GENERAL FORM STYLES
 ---------------------------------------------*/
 input.string {
-	width:300px;
-	min-width:300px;
-	max-width:300px;	
+	width:400px;
+	min-width:400px;
+	max-width:400px;	
 }
 
 textarea.text {
-	width:300px;
-	min-width:300px;
-	max-width:300px;
+	width:400px;
+	min-width:400px;
+	max-width:400px;
 	height: 50px;
 	min-height: 50px;
 	max-height: 200px;

@@ -15,6 +15,8 @@
 //= require_tree .
 //= require twitter/bootstrap
 //= require cocoon
+//= require ckeditor/init
+//= require_tree ./ckeditor
 
 $(document).ready(function(){
 
@@ -122,6 +124,65 @@ $(document).ready(function(){
 		
 		return false;
 	});
+	
+	// PROJECT FORM 'details' || 'objectives' || 'tags'
+	// DETAILS
+	$('a#details').click(function(){
+		$('a#details').addClass('active');
+		$('a#objectives').removeClass('active');
+		$('a#tags').removeClass('active');
+		$('a#team').removeClass('active');
+		
+		$('#project-form-details').show();
+		$('#project-form-objectives').hide();
+		$('#project-form-tags').hide();
+		$('#project-form-team').hide();
+		
+		return false;
+	});
+	// OBJECTIVES
+	$('a#objectives').click(function(){
+		$('a#details').removeClass('active');
+		$('a#objectives').addClass('active');
+		$('a#tags').removeClass('active');
+		$('a#team').removeClass('active');
+		
+		$('#project-form-details').hide();
+		$('#project-form-objectives').show();
+		$('#project-form-tags').hide();
+		$('#project-form-team').hide();
+		
+		return false;
+	});
+	// TAGS
+	$('a#tags').click(function(){
+		$('a#details').removeClass('active');
+		$('a#objectives').removeClass('active');
+		$('a#tags').addClass('active');
+		$('a#team').removeClass('active');
+		
+		$('#project-form-details').hide();
+		$('#project-form-objectives').hide();
+		$('#project-form-tags').show();
+		$('#project-form-team').hide();
+		
+		return false;
+	});
+	// TEAM
+	$('a#team').click(function(){
+		$('a#details').removeClass('active');
+		$('a#objectives').removeClass('active');
+		$('a#tags').removeClass('active');
+		$('a#team').addClass('active');
+		
+		$('#project-form-details').hide();
+		$('#project-form-objectives').hide();
+		$('#project-form-tags').hide();
+		$('#project-form-team').show();
+		
+		return false;
+	});
+
 });
 
   

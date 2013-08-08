@@ -51,6 +51,22 @@
 		</ul><!-- END #profile-buttons -->
 			
 		<div id="overview">
+			<div id="users-overview">
+				<div class="profile-block">
+					<div class="profile-block-content">
+						<h3><%= @user.first_name %>'s Bio</h3>
+						<hr>
+						<div class="profile-bio">
+							<% if @user.bio %>
+								<%= raw(@user.bio)  %>
+							<% else %>
+								<%= @user.first_name %>'s bio is coming soon.
+							<% end %>
+						</div><!-- END .profile-projects -->
+					</div><!-- END .profile-block-content -->
+				</div><!-- END .profile-block -->
+			</div><!-- END #users-overview -->
+			
 			<div id="projects-overview">
 				<div class="profile-block">
 					<div class="profile-block-content">
@@ -59,8 +75,13 @@
 						<div class="profile-projects">
 							<% if @user.projects.count >= 1 %>
 								<% @user.projects.each do |project| %>
-									<h4><%= link_to project.title, project %></h4>
-									<p><%= project.description %></p>
+									<h4>
+										<%= link_to project.title, project %>
+										<% if @user == project.owner %>
+											<%= link_to "[ edit ]", edit_project_path(project), style: 'color:#333;' %>
+										<% end %>
+									</h4>
+									<%= truncate_html( raw(project.description) ) %>
 								<% end %>
 							<% else %>
 								<%= @user.first_name %> is not currently involved in any projects.
@@ -70,14 +91,6 @@
 				</div><!-- END .profile-block -->
 			</div><!-- END #projects-overview  -->
 			
-			<div id="organizations-overview">
-				<div class="profile-block">
-					<div class="profile-block-content">
-						<h3><%= @user.first_name %>'s Organizations</h3>
-						<hr>
-					</div><!-- END .profile-block-content -->
-				</div><!-- END .profile-block -->
-			</div><!-- END #organizations-overview -->
 		</div><!-- END #overview -->
 		
 		<div id="activity" class="hide">
