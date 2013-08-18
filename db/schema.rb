@@ -83,6 +83,12 @@ ActiveRecord::Schema.define(:version => 20130808150152) do
     t.string   "status",      :default => "Pending"
   end
 
+  create_table "project_objectives", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "projects", :force => true do |t|
     t.string   "title",                                 :null => false
     t.string   "organization"
