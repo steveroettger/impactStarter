@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe ProjectsController do
 
-   let(:project) { FactoryGirl.create(:project) }
+   let(:project) { create(:project) }
 
   describe "GET #index" do
     it "populates an array of projects" do
@@ -53,12 +53,12 @@ describe ProjectsController do
     context "with valid attributes" do
       it "saves the new project in the database" do
         expect {
-          post :create, project: FactoryGirl.attributes_for(:project)
+          post :create, project: attributes_for(:project)
         }.to change(Project, :count).by(1)
       end
 
       it "redirects to the home page" do
-        post :create, project: FactoryGirl.attributes_for(:project)
+        post :create, project: attributes_for(:project)
         response.should redirect_to Project.last
       end
     end
@@ -81,7 +81,7 @@ describe ProjectsController do
 
   describe "PUT update" do
     before :each do
-      @project = FactoryGirl.create(:project, title: "Example Project", description: "This is a test...")
+      @project = create(:project, title: "Example Project", description: "This is a test...")
       sign_in @project.owner
     end
 
