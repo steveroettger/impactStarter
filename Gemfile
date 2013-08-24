@@ -22,7 +22,9 @@ group :assets do
   gem 'uglifier'
 end
 
-gem 'jquery-rails'
+# need this version of jquery-rails or activeadmin blows-up with:
+#  Sprockets::FileNotFound ... couldn't find file 'jquery-ui'
+gem "jquery-rails", "2.3.0"
 
 # USER AUTHENTICATION
 gem 'devise'
