@@ -1,38 +1,38 @@
 class ProjectsController < ApplicationController
   before_filter :auth_user, only: [:new, :edit, :update, :destroy]
-  
+
   def index
-    @projects = Project.all
-    
+    @projects = params[:search] ? Project.search(params[:search]) : Project.all
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @projects }
     end
   end
-  
+
   def show
     @project = Project.find(params[:id])
-    
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @project }
     end
   end
-  
+
   def new
     @project = Project.new
     3.times { @project.objectives.build }
     3.times { @project.tags.build }
-    
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @project }
     end
   end
-  
+
   def create
     @project = current_user.projects.build(params[:project])
-    
+
     respond_to do |format|
       if @project.save
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
@@ -43,19 +43,19 @@ class ProjectsController < ApplicationController
       end
     end
   end
-  
+
   def edit
     @project = Project.find(params[:id])
-    
+
     respond_to do |format|
       format.html # edit.html.erb
       format.json { render json: @project }
     end
   end
-  
+
   def update
     @project = Project.find(params[:id])
-    
+
     respond_to do |format|
       if @project.update_attributes(params[:project])
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
@@ -64,9 +64,9 @@ class ProjectsController < ApplicationController
         format.html { render action: "edit" }
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end
-    end    
+    end
   end
-  
+
   def destroy
     @project = Project.find(params[:id]).destroy
 

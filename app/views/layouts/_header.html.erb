@@ -1,7 +1,7 @@
 <div id="main-header">
-	<div id="header-container">  
+	<div id="header-container">
     	<%= link_to "ImpactStarter", root_path, id: "logo" %>
-		
+
 		<div id="top-nav">
 			<ul>
 				<li><a href="/about" class="border">Learn<br/><span class="smaller">about us</span></a></li>
@@ -9,7 +9,7 @@
 				<li><a href="/projects/new" >Start<br/><span class="smaller">a project</span></a></li>
 			</ul>
 		</div>
-	 	
+
 		<div id="main-nav">
 	    	<ul>
 			<% if user_signed_in? %>
@@ -27,10 +27,10 @@
 </div><!-- END #MAIN-HEADER -->
 
 <div id="search-bar" style="display: none">
-	<form action="" method="" accept-charset="utf-8">
+	<form action="<%= projects_path -%>" method="GET" accept-charset="utf-8">
 		<ul>
 			<li>Discover Awesome Social Projects Around The World:</li>
-			<li><input type="text" name="some_name" value="" id="header-search"></li>
+			<li><input type="text" name="search" value="" id="header-search"></li>
 			<li><input type="submit" value="SEARCH" class="btn"></li>
 		</ul>
 	</form>
