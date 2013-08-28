@@ -52,6 +52,10 @@ gem "meta_search",    '>= 1.1.0.pre'
 gem 'rmagick'
 gem 'carrierwave'
 
+# WILL_PAGINATE
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
+
 group :development, :test do
   # TESTING 
    gem "rspec-rails", "~> 2.13.2"

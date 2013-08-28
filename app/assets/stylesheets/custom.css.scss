@@ -691,6 +691,8 @@ USER PROFILE
 				}
 				
 				img {
+					width:30px;
+					height:30px;
 					max-width:30px;
 					max-height:30px;
 					min-width:30px;
@@ -727,6 +729,44 @@ ul#profile-edit {
 
 ul#profile-edit li a.active {
 	background: $ltOrange;
+}
+
+.follow-container {
+	margin:20px auto;
+	width:700px;
+	height:auto;
+	background: #F7F7F7;
+	border-top:1px solid #EDEDED;
+	border-right:2px solid #EDEDED;
+	border-bottom:2px solid #EDEDED;
+	border-left:1px solid #EDEDED;
+		
+	.follower-item {	
+		padding:20px; 
+		border-bottom:1px solid #CCCCCC;
+		
+		img {
+			margin-right:10px;
+			width:60px;
+			height:60px;
+			min-width:60px;
+			min-height:60px;
+			max-width:60px;
+			max-height:60px;
+		}
+		
+		a, a:visited {
+			position:relative;
+			top:8px;
+			color:$orange;
+			font-weight:bolder;
+			font-style:italic;
+		}
+		
+		p {
+			padding:8px 0 0 0;
+		}
+	}
 }
 
 /*--------------------------------------------
@@ -1086,7 +1126,7 @@ FOOTER
 /*--------------------------------------------
 GENERAL FORM STYLES
 ---------------------------------------------*/
-input.string {
+input.string, input.password  {
 	width:400px;
 	min-width:400px;
 	max-width:400px;	
