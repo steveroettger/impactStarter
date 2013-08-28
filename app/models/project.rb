@@ -17,23 +17,5 @@ class Project < ActiveRecord::Base
   validates :title, presence: true
   validates :description, presence: true
 
-  def self.filter(search='')
-    wheres = []
-    values = []
-
-    search.to_s.split(' ').each do |v|
-      %w[title description].each do |a|
-        wheres << "#{a} LIKE ?"
-        values << "#{v}%"
-        wheres << "#{a} LIKE ?"
-        values << "% #{v}%"
-      end
-    end
-
-    if wheres.empty?
-      where(primary_key => 0)
-    else
-      where [wheres.join(' OR '), *values]
-    end
-  end
+  filter_by :title, :description
 end

@@ -18,4 +18,7 @@ FactoryGirl.define do
     title ''
     description ''
   end
+
+  factory :organization do
+  end
 end

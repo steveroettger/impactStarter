@@ -21,6 +21,8 @@ class User < ActiveRecord::Base
   # UPLOADER FOR USER PIC
   mount_uploader :image, ImageUploader
 
+  filter_by :first_name, :last_name, :headline, :bio
+
   # CREATE A METHOD TO PRINT OUT FULL NAME OF USER
   def full_name
     "#{first_name} #{last_name}"

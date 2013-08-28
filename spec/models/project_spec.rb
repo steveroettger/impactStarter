@@ -1,9 +1,7 @@
 require 'spec_helper'
 
 describe Project do
-
   describe "filter" do
-
     before do
       @project = create :project, title: "little boy blue", description: "Ran away with the spoon"
       @project2 = create :project, title: "the itsy bitsy spider", description: "cut off their tails with a carving knife"
