@@ -17,7 +17,7 @@ class Project < ActiveRecord::Base
   validates :title, presence: true
   validates :description, presence: true
 
-  def self.search(search='')
+  def self.filter(search='')
     wheres = []
     values = []
 

@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   before_filter :auth_user, only: [:new, :edit, :update, :destroy]
 
   def index
-    @projects = params[:search] ? Project.search(params[:search]) : Project.all
+    @projects = params[:search] ? Project.filter(params[:search]) : Project.all
 
     respond_to do |format|
       format.html # index.html.erb
