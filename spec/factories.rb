@@ -20,5 +20,6 @@ FactoryGirl.define do
   end
 
   factory :organization do
+    association :director, factory: :user
   end
 end
