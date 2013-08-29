@@ -4,7 +4,11 @@
 	<h1>Following</h1>
 	<hr>
 	<div class="follow-container">
-		<%= render 'followers' %>
+		<% if @user.followed_users.count >= 1 %>
+			<%= render 'followers' %>
+		<% else %>
+			<p><%= @user.first_name %> is not currently following anyone.</p>
+		<% end %>
 	</div><!-- END .follow-container -->
 </div><!-- END .interior-container -->
 

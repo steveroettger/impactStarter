@@ -742,6 +742,7 @@ ul#profile-edit li a.active {
 	border-left:1px solid #EDEDED;
 		
 	.follower-item {	
+		position:relative;
 		padding:20px; 
 		border-bottom:1px solid #CCCCCC;
 		
@@ -1088,6 +1089,10 @@ ul#project-form-tabs li a.not-active {
 }
 
 /*--------------------------------------------
+ORGANIZATION STYLES
+---------------------------------------------*/
+
+/*--------------------------------------------
 FOOTER
 ---------------------------------------------*/
 #footer {
@@ -1170,10 +1175,7 @@ a.border { border-left:1px solid $dkGray; }
 	}
 }
 
-input[type="submit"].follow-btn {
-	position:absolute;
-	top:90px;
-	right:20px;
+input[type="submit"].follow-btn, input[type="submit"].follow-pages-btn {
 	padding-top:5px;
 	width:157px;
 	height:32px;
@@ -1187,4 +1189,16 @@ input[type="submit"].follow-btn {
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 	&:hover { text-decoration:none; background:$ltOrange; }
+}
+
+input[type="submit"].follow-btn {
+	position:absolute;
+	top:90px;
+	right:20px;
+}
+
+input[type="submit"].follow-pages-btn {
+	position:absolute;
+	top:40px;
+	right:60px;
 }

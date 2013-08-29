@@ -28,7 +28,7 @@ class OrganizationsController < ApplicationController
   end
   
   def create
-    @organization = Organization.new(params[:organization])
+    @organization = current_user.organizations.build(params[:organization])
     
     respond_to do |format|
       if @organization.save

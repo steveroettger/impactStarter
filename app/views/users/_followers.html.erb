@@ -5,12 +5,17 @@
 			<a href="<%= user_path(user) %>"><%= user.full_name %></a>
 			<p><%= user.headline %></p>
 			
-			<% unless current_user == @user %>
+			<% unless current_user == user %>
 			<div id="follower-form">
-				<% if current_user.following?(@user) %>
-			   		<%= render 'unfollow' %>
+				<% if current_user.following?(user) %>
+			   		<%= form_for(current_user.relationships.find_by_followed_id(user), html: { method: :delete }, remote: true) do |f| %>
+					  <%= f.submit "unfollow", class: "follow-pages-btn", style: "background:#ed8738;" %>
+					<% end %>
 			 	<% else %>
-			    	<%= render 'follow' %>
+			    	<%= form_for(current_user.relationships.build(followed_id: user.id), remote: true) do |f| %>
+					  <%= f.hidden_field :followed_id %>
+					  <%= f.submit "follow", class: "follow-pages-btn" %>
+					<% end %>
 			  	<% end %>
 			</div><!-- END #follower-form -->
 			<% end %>
@@ -23,12 +28,17 @@
 			<a href="<%= user_path(user) %>"><%= user.full_name %></a>
 			<p><%= user.headline %></p>
 
-			<% unless current_user == @user %>
+			<% unless current_user == user %>
 			<div id="follower-form">
-				<% if current_user.following?(@user) %>
-			   		<%= render 'unfollow' %>
+				<% if current_user.following?(user) %>
+			   		<%= form_for(current_user.relationships.find_by_followed_id(user), html: { method: :delete }, remote: true) do |f| %>
+					  <%= f.submit "unfollow", class: "follow-pages-btn", style: "background:#ed8738;" %>
+					<% end %>
 			 	<% else %>
-			    	<%= render 'follow' %>
+			    	<%= form_for(current_user.relationships.build(followed_id: user.id), remote: true) do |f| %>
+					  <%= f.hidden_field :followed_id %>
+					  <%= f.submit "follow", class: "follow-pages-btn" %>
+					<% end %>
 			  	<% end %>
 			</div><!-- END #follower-form -->
 			<% end %>
