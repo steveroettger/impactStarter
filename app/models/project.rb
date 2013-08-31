@@ -18,4 +18,5 @@ class Project < ActiveRecord::Base
   validates :description, presence: true
 
   filter_by :title, :description
+  scope :featured, proc{ offset(rand(count)) }
 end

@@ -1,0 +1,10 @@
+<% if @projects.none? and params.has_key? :search -%>
+  <h2>No projects found for: <em>"<%= params[:search] -%>"</em></h2>
+<% end -%>
+<div id="projects-search-container">
+  <% @projects.each_slice(2) do |projects_for_row| -%>
+    <div class="projects_row">
+      <%= render partial: 'project', collection: projects_for_row %>
+    </div>
+  <% end -%>
+</div>

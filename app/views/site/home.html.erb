@@ -3,32 +3,18 @@
 		<img src="/assets/home-featured-arrow.png" align="right" />
 		<h1>Harness the power<br>of private capital<br>for social good</h1>
 	</div>
-	
+
 	<div id="home-featured-bar">
 		<h1>You Want To Make A Difference. We Want To Help.</h1>
 		<img src="/assets/home-main-arrow.png" alt="" id="home-main-arrow" />
 		<%= link_to 'Start A Project', new_project_path, id: 'start-project-btn' %>
 	</div><!-- END #home-featured-bar -->
-	
+
 	<div class="clear"></div>
 </div><!-- END #home-featured -->
 
-<div id="home-project-container">
-	<div class="project">
-		<div class="project-header">
-			<h1>Hurricane Brandy Relief</h1> <!-- PROJECT TITLE -->
-		</div>
-		
-		<div class="project-image">
-			<img src="http://placehold.it/440x310" width="440" height="310" />
-		</div>
-		
-		<div class="project-description">
-			<h2>Delaware Red Cross</h2> <!-- ORGANIZATION TITLE -->
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-			<a href="#" class="learn-more">Learn More &nbsp;&nbsp;&rarr;</a>
-		</div>
-		
-	</div>
-	
-</div><!-- END #home-project-container -->
+<% if @project -%>
+	<div id="home-project-container">
+		<%= render partial: '/projects/project', object: @project %>
+	</div><!-- END #home-project-container -->
+<% end %>

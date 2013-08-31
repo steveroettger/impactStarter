@@ -22,7 +22,13 @@
 			<div id="project-overview" class="project-block">
 				<h1><%= @project.title %></h1>
 				<div id="project-video">
-					<iframe width="560" height="360" src="<%= @project.video_url %>" frameborder="0" allowfullscreen></iframe>
+					<% if @project.video_url? -%>
+						<iframe width="560" height="360" src="<%= @project.video_url %>" frameborder="0" allowfullscreen></iframe>
+					<% elsif @project.image_url :large -%>
+						<%= image_tag @project.image_url :large -%>
+					<% else -%>
+						<img src="http://placehold.it/560x360" />
+					<% end -%>
 				</div><!-- END #project-video -->
 				<h2>Project Overview</h2>
 				<div class="project-description">
@@ -32,22 +38,22 @@
 
 			<div id="project-funding" class="project-block">
 				<h1>Funding Goals</h1>
-				
+
 				<div id="funding-diagram">
 					<div class="funding-box">
 						<h5>Seeking</h5>
 						<h2 class="number"><%= @project.seeking_amount %></h2>
 					</div><!-- END .funding-box -->
-					
+
 					<h3>of</h3>
-					
+
 					<div class="funding-box">
 						<h5>Funded Amount</h5>
 						<h2 class="number"><%= @project.funded_amount %></h2>
 					</div><!-- END .funding-box -->
-					
+
 					<h3>for</h3>
-					
+
 					<div class="funding-box">
 						<h5>Use of Funds</h5>
 						<ul id="tag-list">
@@ -56,13 +62,13 @@
 							<% end %>
 						</ul>
 					</div><!-- END .funding-box -->
-					
+
 					<div class="clear" style="height:10px;"></div>
 				</div><!-- END #funding-diagram -->
-			
+
 			</div><!-- END #project-funding -->
 		</div><!-- END #project-main -->
-		
+
 		<div id="project-sidebar">
 			<div id="project-founders" class="project-sidebar-block">
 				<h3>Project Founders</h3>
@@ -70,7 +76,7 @@
 				<h5><%= link_to @project.owner.full_name, @project.owner %></h5>
 				<p><%= @project.owner.headline %></p>
 			</div><!-- END #project-founders -->
-			
+
 			<div id="project-objectives" class="project-sidebar-block">
 				<h3>Project Objectives</h3>
 				<ol class="objectives-list">
@@ -79,7 +85,7 @@
 					<% end %>
 				</ol><!-- END .objectives-list -->
 			</div><!-- END #project-objectives -->
-			
+
 		</div><!-- END #project-sidebar -->
 	</div><!-- END #project-container-content -->
 </div><!-- END #project-container -->
