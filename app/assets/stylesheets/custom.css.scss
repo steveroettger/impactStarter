@@ -266,15 +266,16 @@ HOME
 
 #projects-search-container .project {
   float: left;
-  margin-right: 10px;
 }
-.projects_row .project {
+.projects_row .project:first-child {
+  margin-right: 20px;
 }
 #home-search-container .project {
 }
 .projects_row {
   clear:both;
-  margin: 10px 0;
+  margin: 25px 0;
+  height: 480px;
 }
 .project {
 	margin:0;
