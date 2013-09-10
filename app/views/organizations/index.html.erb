@@ -1,10 +1,10 @@
-<div id="org-container">
-	<div id="org-container-content">
-		<ol>
-			<% @organizations.each do |org| %>
-				<li><%= link_to org.name, org %></li>
-			<% end %>
-		</ol>
-		
-	</div>
+<% provide(:title, 'Organizations') %>
+<div class="interior-container">
+  <h1>Organizations</h1>
+  <% if @organizations.none? and params.has_key? :search -%>
+    <div class="organization-container">
+      <p>No organizations found for: <em>"<%= params[:search] -%>"</em></p>
+    </div>
+  <% end -%>
+  <%= render partial: 'organization', collection: @organizations %>
 </div>

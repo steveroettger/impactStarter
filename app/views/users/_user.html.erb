@@ -1,0 +1,12 @@
+<div class="user-container">
+  <div class="user-item">
+    <% if user.image_url :thumb -%>
+      <img src="<%= user.image %>" alt="<%= user.full_name %>">
+    <% else -%>
+      <img src="http://placehold.it/60x60" alt="<%= user.full_name %>">
+    <% end -%>
+    <a href="<%= user_path(user) %>"><%= user.full_name %></a>
+    <p><%= user.headline %></p>
+    <div class="clear"></div>
+  </div>
+</div>

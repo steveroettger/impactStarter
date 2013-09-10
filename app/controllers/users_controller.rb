@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :correct_user,   only: [:edit, :destroy]
 
   def index
-    @users = params[:search] ? User.search(params[:search]) : User.all
+    @users = params[:search] ? User.filter(params[:search]) : User.all
 
     respond_to do |format|
       format.html # index.html.erb

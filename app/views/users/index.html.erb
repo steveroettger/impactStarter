@@ -1,0 +1,10 @@
+<% provide(:title, 'Users') %>
+<div class="interior-container">
+  <h1>Users</h1>
+  <% if @users.none? and params.has_key? :search -%>
+    <div class="user-container">
+      <p>No users found for: <em>"<%= params[:search] -%>"</em></p>
+    </div>
+  <% end -%>
+  <%= render partial: 'user', collection: @users %>
+</div>
