@@ -1,0 +1,48 @@
+<% provide(:title, @organization.name) %>
+
+<div id="org-container">
+	<div id="org-container-content">
+		<div id="org-main">
+			<div id="org-header">
+				<% if current_user == @organization.director %>
+					<%= link_to "[ edit ]", edit_organization_path(@organization), class: "edit-link" %>
+				<% end %>
+				
+				<% if @organization.image? %>
+					<img src="<%= @organization.image %>" alt="<%= @organization.name %>" class="org-image" />
+				<% else %>
+					<img src="http://placehold.it/185x185" alt="<%= @organization.full_name %>" width="185" height="185" id="profile-img" />
+				<% end %>
+				
+				<div id="org-header-content">
+					<h1><%= @organization.name %></h1>
+					<p>Address: <%= @organization.address %> <%= @organization.city %>, <%= @organization.state %></p>
+					<p>Entity Type: <%= @organization.entity_type %></p>
+					<p>Tax Status: <%= @organization.tax_status %></p>
+				</div><!-- END #org-header-content -->
+				
+				<div class="clear"></div>
+				
+			</div><!-- END #org-header -->
+			
+			<div class="org-block">
+				<h3>About <%= @organization.name %></h3>
+				<hr>
+				<div class="org-description">
+					<%= raw(@organization.description)  %>
+				</div><!-- END .org-description -->
+			</div><!-- END .org-block -->
+			
+		</div><!-- END #org-main -->
+		
+		<div id="org-sidebar">
+			<div id="org-directors" class="org-sidebar-block">
+				<h3>Board Members</h3>
+				<img src="<%= @organization.director.image %>" alt="<%= @organization.director.full_name %>" width="132" height="132" class="director-image" align="left" />
+				<h5><%= link_to @organization.director.full_name, @organization.director %></h5>
+				<p><%= @organization.director.headline %></p>
+			</div><!-- END #org-directors -->
+		</div><!-- END #org-sidebar -->
+		
+	</div><!-- END #org-container-content -->
+</div><!-- END #org-container -->

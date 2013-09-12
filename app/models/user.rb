@@ -37,7 +37,6 @@ class User < ActiveRecord::Base
       user.last_name = auth.info.last_name
       user.email = auth.info.email
       user.headline = auth.info.headline
-      user.image = auth.info.picture_url
       user.location = auth.info.location
       user.linkedin = auth.info.public_profile_url
     end

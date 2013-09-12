@@ -1101,7 +1101,124 @@ ul#project-form-tabs li a.not-active {
 /*--------------------------------------------
 ORGANIZATION STYLES
 ---------------------------------------------*/
+#org-container {
+	margin:0;
+	width:100%;
+	height:auto;
+	
+	#org-container-content {
+		margin:30px auto;
+		width: 960px;
+		min-height:110px;
+		
+		#org-main {
+			position:relative;
+			float:left;
+			width:590px;
+			
+			#org-header {
+				margin-bottom:30px;
+				float:left;
+				width:590px;
+				height:185px;
+				background: url("/assets/profile-header-bkgd.jpg");
+				
+				a.edit-link {
+					position:absolute;
+					top:5px;
+					right:10px;
+					color:$white;
+				}
+				
+				img.org-image {
+					float:left;
+					min-width:185px;
+					max-width:185px;
+					min-height:185px;
+					max-height:185px;
+				}
+				
+				#org-header-content {
+					position:relative;
+					top:10px;
+					left:15px;
+					color:$white;
 
+					h1 { font-size:28px; font-weight:lighter; }
+
+					p { font-size:14px; }
+				}	
+			}
+			
+			.org-block {
+				float:left;
+				width:590px;
+				height:auto;
+				background: #F7F7F7;
+				border-top:1px solid #EDEDED;
+				border-right:2px solid #EDEDED;
+				border-bottom:2px solid #EDEDED;
+				border-left:1px solid #EDEDED;
+				
+				h3 {
+					margin:0;
+					padding:15px 20px 5px 20px;
+					font-size:22px;
+					line-height:24px;
+					font-weight:lighter;
+					color:$dkGray;
+				}
+
+				hr {
+					margin:8px 0;
+					border: 0;
+				    height: 1px;
+					background:#CCCCCC;
+				}
+				
+				.org-description {
+					padding:15px 20px 15px 20px;
+				}
+			}
+		}
+		
+		#org-sidebar {
+			position:relative;
+			left:40px;
+			float:left;
+			width:330px;
+			
+			#org-directors {}
+
+			.org-sidebar-block {
+				float:left;
+				padding:15px;
+				width:300px;
+				height:auto;
+				background: #F7F7F7;
+				border-top:1px solid #EDEDED;
+				border-right:2px solid #EDEDED;
+				border-bottom:2px solid #EDEDED;
+				border-left:1px solid #EDEDED;
+
+				h3 {
+					font-size:18px;
+					font-weight:lighter;
+					color:$dkGray;
+					line-height:20px;
+				}
+
+				.director-image {
+					margin-right:10px;
+					border-top:1px solid #EDEDED;
+					border-right:2px solid #EDEDED;
+					border-bottom:2px solid #EDEDED;
+					border-left:1px solid #EDEDED;
+				}
+			}
+		}
+	}
+}
 /*--------------------------------------------
 FOOTER
 ---------------------------------------------*/

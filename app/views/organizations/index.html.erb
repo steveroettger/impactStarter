@@ -1,0 +1,10 @@
+<div id="org-container">
+	<div id="org-container-content">
+		<ol>
+			<% @organizations.each do |org| %>
+				<li><%= link_to org.name, org %></li>
+			<% end %>
+		</ol>
+		
+	</div>
+</div>
