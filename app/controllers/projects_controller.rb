@@ -32,9 +32,10 @@ class ProjectsController < ApplicationController
 
   def create
     @project = current_user.projects.build(params[:project])
-
+    
     respond_to do |format|
       if @project.save
+        @project.create_activity :create, owner: current_user, recipient: @project
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
         format.json { render json: @project, status: :created, location: @project }
       else
@@ -58,6 +59,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.update_attributes(params[:project])
+        @project.create_activity :create, owner: current_user, recipient: @project
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
         format.json { head :ok }
       else
@@ -71,6 +73,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id]).destroy
 
     respond_to do |format|
+      @project.create_activity :create, owner: current_user, recipient: @project
       format.html { redirect_to projects_url }
       format.json { head :ok }
     end

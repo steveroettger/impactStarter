@@ -1,4 +1,6 @@
 class Project < ActiveRecord::Base
+  include PublicActivity::Common
+  
   attr_accessible :title, :seeking_amount, :funded_amount, :description, :image, :video_url, :status, :objectives_attributes, :tags_attributes
 
   # CARRIERWAVE IMAGE UPLOADER

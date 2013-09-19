@@ -20,6 +20,9 @@
 	<div id="project-container-content">
 		<div id="project-main">
 			<div id="project-overview" class="project-block">
+				<% if current_user == @project.owner %>
+					<%= link_to "[ edit ]", edit_project_path(@project), class: 'project-edit' %>
+				<% end %>
 				<h1><%= @project.title %></h1>
 				<div id="project-video">
 					<% if @project.video_url? -%>

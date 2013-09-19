@@ -882,6 +882,7 @@ PROJECT STYLES
 
 
 			.project-block {
+				position:relative;
 				float:left;
 				padding:15px;
 				width:560px;
@@ -898,6 +899,12 @@ PROJECT STYLES
 					color:$dkGray;
 					font-size:28px;
 					font-weight:lighter;
+				}
+				
+				a.project-edit {
+					position:absolute;
+					top:10px;
+					right:10px;
 				}
 
 				#project-video {
