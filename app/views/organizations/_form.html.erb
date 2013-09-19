@@ -1,7 +1,7 @@
 <%= simple_form_for(@organization, html: { class: 'form-vertical' }) do |f| %>
 
 	<%= f.input :name %>
-	<%= f.input :description, as: :ckeditor, :input_html => { :ckeditor => {:width => '800', :toolbar => 'full' } } %>
+	<%= f.input :description, as: :ckeditor, :input_html => { :ckeditor => {:width => '800', :toolbar => 'small' } } %>
 	<%= f.input :address %>
   	<%= f.input :city %>
 	<%= f.input :state, as: :select, collection: us_states, include_blank: true %>
