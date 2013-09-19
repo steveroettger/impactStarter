@@ -1,7 +1,7 @@
 class OrganizationsController < ApplicationController
 
   def index
-    @organizations = params[:search] ? Organization.search(params[:search]) : Organization.all
+    @organizations = params[:search] ? Organization.filter(params[:search]) : Organization.all
 
     respond_to do |format|
       format.html # index.html.erb

@@ -151,10 +151,16 @@ HEADER SEARCH BAR
 		list-style:none;
 
 		li {
-			display:inline;
+			display:block;
+			float: left;
 			font-size:18px;
+			margin-left: 6px;
 
-			input {
+			select {
+				width: auto;
+			}
+
+			input, select {
 				margin-bottom:0;
 			}
 
@@ -742,7 +748,7 @@ ul#profile-edit li a.active {
 	background: $ltOrange;
 }
 
-.follow-container {
+.follow-container, .user-container, .organization-container {
 	margin:20px auto;
 	width:700px;
 	height:auto;
@@ -752,7 +758,7 @@ ul#profile-edit li a.active {
 	border-bottom:2px solid #EDEDED;
 	border-left:1px solid #EDEDED;
 
-	.follower-item {
+	.follower-item, .user-item, .organization-item {
 		position:relative;
 		padding:20px;
 		border-bottom:1px solid #CCCCCC;

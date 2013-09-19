@@ -1,0 +1,12 @@
+<div class="organization-container">
+  <div class="organization-item">
+    <% if organization.logo_url :thumb -%>
+      <img src="<%= organization.logo %>" alt="<%= organization.name %>">
+    <% else -%>
+      <img src="http://placehold.it/60x60" alt="<%= organization.name %>">
+    <% end -%>
+    <a href="<%= organization_path(organization) %>"><%= organization.name %></a>
+    <p><%= truncate organization.description, length: 100 %></p>
+    <div class="clear"></div>
+  </div>
+</div>

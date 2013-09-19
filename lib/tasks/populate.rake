@@ -16,7 +16,7 @@ namespace :populate do
     end
   end
 
-  desc "TODO"
+  desc "Populate projects"
   task :projects => :load_factories do
     puts "Creating projects"
     (ENV['PROJECTS_COUNT'] || ENV['COUNT'] || 10).to_i.times do
@@ -24,11 +24,11 @@ namespace :populate do
     end
   end
 
-  desc "TODO"
+  desc "Populate organizations"
   task :organizations => :load_factories do
     puts "Creating organizations"
     (ENV['ORGANIZATIONS_COUNT'] || ENV['COUNT'] || 10).to_i.times do
-      FactoryGirl.create(:organization)
+      FactoryGirl.create(:organization, name: "Red Cross", description: "Suspendisse urna metus, ornare id sagittis in, pulvinar quis elit. Etiam non tortor sem. Sed id orci vel lectus sodales vestibulum. Maecenas lacinia lacinia justo sollicitudin sagittis.")
     end
   end
 
