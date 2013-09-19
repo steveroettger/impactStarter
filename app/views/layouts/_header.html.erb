@@ -27,11 +27,22 @@
 </div><!-- END #MAIN-HEADER -->
 
 <div id="search-bar" style="display: none">
-	<form action="<%= projects_path -%>" method="GET" accept-charset="utf-8">
+	<form action="#" method="GET" accept-charset="utf-8">
 		<ul>
-			<li>Discover Awesome Social Projects Around The World:</li>
-			<li><input type="text" name="search" value="" id="header-search"></li>
-			<li><input type="submit" value="SEARCH" class="btn"></li>
+			<li>Discover Awesome Social Projects:</li>
+			<li>
+		<input type="text" name="search" value="<%= params[:search] -%>" id="header-search" class="search-query" />
+			</li>
+			<li>
+			  <select>
+				<option <%= 'selected ' if current_page?(projects_path) -%>value="<%= projects_path -%>">Projects</option>
+				<option <%= 'selected ' if current_page?(users_path) -%>value="<%= users_path -%>">People</option>
+				<option <%= 'selected ' if current_page?(organizations_path) -%>value="<%= organizations_path -%>">Organizations</option>
+			  </select>
+			</li>
+			<li>
+			<input type="submit" value="SEARCH" class="btn" />
+			</li>
 		</ul>
 	</form>
 </div>

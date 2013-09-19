@@ -151,10 +151,16 @@ HEADER SEARCH BAR
 		list-style:none;
 
 		li {
-			display:inline;
+			display:block;
+			float: left;
 			font-size:18px;
+			margin-left: 6px;
 
-			input {
+			select {
+				width: auto;
+			}
+
+			input, select {
 				margin-bottom:0;
 			}
 
