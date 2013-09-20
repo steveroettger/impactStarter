@@ -2,7 +2,7 @@
   <li><a href="#" id="settings" class="active">Account Settings</a></li>
   <li><a href="#" id="details">Profile Details</a></li>
 </ul><!-- END #profile-edit -->
- 
+
 <div id="profile-edit-content">
   <div id="profile-settings">
   	<%= simple_form_for(@user, html: { multipart: true, class: 'form-vertical' }) do |f| %>
@@ -18,12 +18,12 @@
 		<%= f.button :submit, "Update", class: "btn" %>
 	<% end %>
   </div><!-- END #profile-settings -->
-  
+
   <div id="profile-details" style="display:none;">
   	<%= simple_form_for(@user, html: { multipart: true, class: 'form-vertical' }) do |f| %>
 
 		<%= f.input :headline %>
-		<%= f.input :bio, as: :ckeditor, :input_html => { :ckeditor => {:width => '800', :toolbar => 'full' } } %>
+		<%= f.input :bio, as: :ckeditor, :input_html => { :ckeditor => {:width => '800', :toolbar => 'small' } } %>
 		<%= f.input :location %>
 		<%= f.input :linkedin, label: 'LinkedIn url' %>
 		<%= f.input :facebook, label: 'Facebook url' %>
@@ -32,7 +32,7 @@
 			<%= image_tag @user.image_url, style: 'max-width:185px; max-height:185px;' %>
 		<% end %>
 		<%= f.input :image, as: :file, label: 'Add new image' %>
-		
+
 		<%= f.button :submit, 'Update', class: 'btn' %>
 	<% end %>
   </div><!-- END #profile-details -->

@@ -61,6 +61,14 @@ CKEDITOR.editorConfig = function( config )
 		{ name: 'colors', items : [ 'TextColor','BGColor' ] },
 	];
 
+    config.toolbar = 'small';
+
+    config.toolbar_small =
+        [
+            ['Bold','Italic'],
+            ['BulletedList','NumberedList']
+        ];
+
 	config.toolbar = 'Easy';
 
     config.toolbar_Easy =
