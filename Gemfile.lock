@@ -270,6 +270,7 @@ DEPENDENCIES
   meta_search
   omniauth
   omniauth-linkedin
+  pry
   public_activity
   rails (= 3.2.14)
   rmagick

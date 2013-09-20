@@ -62,6 +62,7 @@ group :development, :test do
   # TESTING
    gem "rspec-rails"
    gem "guard-spork"
+   gem "pry"
 end
 
 group :test do
