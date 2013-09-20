@@ -1292,6 +1292,10 @@ MISC
 ---------------------------------------------*/
 #wrapper .alert { margin-bottom: 0px; }
 
+a#linkedin-btn { margin-bottom:20px; color:#ffffff; text-shadow:1px 1px 1px $black; background:#4875B4; border:1px solid #AAA; }
+
+a#linkedin-btn:hover { background: rgba(72, 117, 180, 0.9); }
+
 .clear { clear:both; float:none; }
 
 .hide { display: none; }
