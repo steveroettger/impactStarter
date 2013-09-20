@@ -6,9 +6,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
+  attr_accessor :current_password
+
   # Setup accessible (or protected) attributes for your model
   attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :remember_me,
-                  :headline, :image, :location, :linkedin, :facebook, :twitter, :bio
+                  :headline, :image, :location, :linkedin, :facebook, :twitter, :bio, :current_password
 
   #RELATIONSHIPS
   has_many :projects, dependent: :destroy
