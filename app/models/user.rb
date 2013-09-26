@@ -10,7 +10,8 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :remember_me,
-                  :headline, :image, :location, :linkedin, :facebook, :twitter, :bio, :current_password
+                  :headline, :image, :location, :linkedin, :facebook, :twitter, :bio, :current_password,
+                  :investor_status, :investor_type
 
   #RELATIONSHIPS
   has_many :projects, dependent: :destroy
@@ -80,6 +81,11 @@ class User < ActiveRecord::Base
 
   def unfollow!(other_user)
     relationships.find_by_followed_id(other_user.id).destroy
+  end
+  
+  # ACCREDITED INVESTOR STATUS
+  def approved_investor?
+    investor_status == true
   end
 
 end

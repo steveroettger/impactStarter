@@ -108,9 +108,11 @@ $(document).ready(function(){
 	$('a#settings').click(function(){
 		$('a#settings').addClass('active');
 		$('a#details').removeClass('active');
+		$('a#investor').removeClass('active');
 		
 		$('#profile-settings').show();
 		$('#profile-details').hide();
+		$('#investor-status').hide();
 		
 		return false;
 	});
@@ -118,9 +120,23 @@ $(document).ready(function(){
 	$('a#details').click(function(){
 		$('a#settings').removeClass('active');
 		$('a#details').addClass('active');
+		$('a#investor').removeClass('active');
 		
 		$('#profile-settings').hide();
 		$('#profile-details').show();
+		$('#investor-status').hide();
+		
+		return false;
+	});
+	
+	$('a#investor').click(function(){
+		$('a#settings').removeClass('active');
+		$('a#details').removeClass('active');
+		$('a#investor').addClass('active');
+		
+		$('#profile-settings').hide();
+		$('#profile-details').hide();
+		$('#investor-status').show();
 		
 		return false;
 	});

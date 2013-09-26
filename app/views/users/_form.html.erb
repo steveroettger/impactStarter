@@ -1,41 +1,60 @@
 <ul id="profile-edit">
   <li><a href="#" id="settings" class="active">Account Settings</a></li>
   <li><a href="#" id="details">Profile Details</a></li>
+  <li><a href="#" id="investor">Investor Status</a></li>
 </ul><!-- END #profile-edit -->
 
 <div id="profile-edit-content">
-  <div id="profile-settings">
-  	<%= simple_form_for(@user, html: { multipart: true, class: 'form-vertical' }) do |f| %>
+  	<div id="profile-settings">
+	  	<%= simple_form_for(@user, html: { multipart: true, class: 'form-vertical' }) do |f| %>
 
-		<%= f.input :first_name %>
-		<%= f.input :last_name %>
-		<%= f.input :email %>
-		<%= f.input :password %>
-		<%= f.input :password_confirmation %>
-		<%= f.input :current_password %>
-		<i>(we need your current password to confirm your changes)</i><br>
+			<%= f.input :first_name %>
+			<%= f.input :last_name %>
+			<%= f.input :email %>
+			<%= f.input :password %>
+			<%= f.input :password_confirmation %>
+			<%= f.input :current_password %>
+			<i>(we need your current password to confirm your changes)</i><br>
 
-		<%= f.button :submit, "Update", class: "btn" %>
-	<% end %>
-  </div><!-- END #profile-settings -->
-
-  <div id="profile-details" style="display:none;">
-  	<%= simple_form_for(@user, html: { multipart: true, class: 'form-vertical' }) do |f| %>
-
-		<%= f.input :headline %>
-		<%= f.input :bio, as: :ckeditor, :input_html => { :ckeditor => {:width => '800', :toolbar => 'small' } } %>
-		<%= f.input :location %>
-		<%= f.input :linkedin, label: 'LinkedIn url' %>
-		<%= f.input :facebook, label: 'Facebook url' %>
-		<%= f.input :twitter, label: 'Twitter url' %>
-		<% if @user.image? %>
-			<%= image_tag @user.image_url, style: 'max-width:185px; max-height:185px;' %>
+			<%= f.button :submit, "Update", class: "btn" %>
 		<% end %>
-		<%= f.input :image, as: :file, label: 'Add new image' %>
+	</div><!-- END #profile-settings -->
 
-		<%= f.button :submit, 'Update', class: 'btn' %>
-	<% end %>
-  </div><!-- END #profile-details -->
+  	<div id="profile-details" style="display:none;">
+	  	<%= simple_form_for(@user, html: { multipart: true, class: 'form-vertical' }) do |f| %>
+
+			<%= f.input :headline %>
+			<%= f.input :bio, as: :ckeditor, :input_html => { :ckeditor => {:width => '800', :toolbar => 'small' } } %>
+			<%= f.input :location %>
+			<%= f.input :linkedin, label: 'LinkedIn url' %>
+			<%= f.input :facebook, label: 'Facebook url' %>
+			<%= f.input :twitter, label: 'Twitter url' %>
+			<% if @user.image? %>
+				<%= image_tag @user.image_url, style: 'max-width:185px; max-height:185px;' %>
+			<% end %>
+			<%= f.input :image, as: :file, label: 'Add new image' %>
+
+			<%= f.button :submit, 'Update', class: 'btn' %>
+		<% end %>
+	</div><!-- END #profile-details -->
+	
+	<div id="investor-status" style="display:none;">
+	  	<%= simple_form_for(@user, html: { multipart: true, class: 'form-vertical' }) do |f| %>
+
+			<%= f.input :investor_status, as: :select, label: 'Do you qualify as an Accredited Investor?' %>
+			<%= f.input :investor_type, as: :radio, 
+						collection: 
+							[['I have individual net worth, or joint net worth with my spouse, that exceeds $1 million (excluding my home and other assets)'], 
+							['I have income exceeding $200,000 in each of the 2 past years and expect the same this year'],
+							['I invest on behalf of an accredited VC firm or other accredited investment company'],
+							['I invest on behalf of a business with $5M in assets or in which all the equity owners are accredited']], 
+						label: 'How do you qualify as an Accredited Investor?' %>
+
+
+			<%= f.button :submit, 'Update', class: 'btn' %>
+		<% end %>
+	  </div><!-- END #profile-details -->
+	
 </div><!-- END #profile-edit-content -->
 
 

@@ -39,6 +39,7 @@
 				</div><!-- END .project-description -->
 			</div><!-- END #project-description -->
 
+			<% if current_user.approved_investor? || current_user == @project.owner %>
 			<div id="project-funding" class="project-block">
 				<h1>Funding Goals</h1>
 
@@ -70,6 +71,7 @@
 				</div><!-- END #funding-diagram -->
 
 			</div><!-- END #project-funding -->
+			<% end %>
 		</div><!-- END #project-main -->
 
 		<div id="project-sidebar">
