@@ -32,6 +32,7 @@ gem "jquery-rails", "2.3.0"
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-linkedin'
+gem 'linkedin'
 
 # USER ACTIVITY w/ PUBLIC ACTIVITY
 gem 'public_activity'

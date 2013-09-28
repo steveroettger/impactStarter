@@ -1,0 +1,12 @@
+<div class="connection-container">
+  <div class="connection-item">
+    <% if connection.picture_url -%>
+      <img src="<%= connection.picture_url %>" alt="<%= connection.full_name %>">
+    <% else -%>
+      <img src="http://placehold.it/60x60" alt="<%= connection.full_name %>">
+    <% end -%>
+    <a href="#"><%= connection.full_name %></a>
+    <p><%= connection.headline %></p>
+    <div class="clear"></div>
+  </div>
+</div>

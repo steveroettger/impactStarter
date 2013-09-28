@@ -1,0 +1,11 @@
+<% provide(:title, 'Invite Your Connections') %>
+
+<div class="interior-container">
+  <h1>Connections</h1>
+  <% if @connections.none? -%>
+    <div class="connections-container">
+      <p>No connections found</p>
+    </div>
+  <% end -%>
+  <%= render partial: 'connection', collection: @connections %>
+</div>
