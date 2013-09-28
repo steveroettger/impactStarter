@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :remember_me,
                   :headline, :image, :location, :linkedin, :facebook, :twitter, :bio, :current_password,
-                  :investor_status, :investor_type
+                  :investor_status, :investor_type, :remote_image_url
 
   #RELATIONSHIPS
   has_many :projects, dependent: :destroy
@@ -36,14 +36,18 @@ class User < ActiveRecord::Base
     user = where(auth.slice(:provider, :uid)).first_or_initialize
     user.provider         = auth.provider
     user.uid              = auth.uid
-    user.first_name       = auth.info.first_name
-    user.last_name        = auth.info.last_name
-    user.email            = auth.info.email
-    user.headline         = auth.info.headline
-    user.location         = auth.info.location
-    user.linkedin         = auth.info.urls.public_profile
-    user.remote_image_url = auth.info.image if auth.info.image
-    user.save unless user.new_record?
+    if user.new_record?
+      # only set these on the first login
+      user.first_name       = auth.info.first_name
+      user.last_name        = auth.info.last_name
+      user.email            = auth.info.email
+      user.headline         = auth.info.headline
+      user.location         = auth.info.location
+      user.linkedin         = auth.info.urls.public_profile
+      user.remote_image_url = auth.info.image if auth.info.image
+    else
+      user.save
+    end
     user
   end
 
@@ -82,7 +86,7 @@ class User < ActiveRecord::Base
   def unfollow!(other_user)
     relationships.find_by_followed_id(other_user.id).destroy
   end
-  
+
   # ACCREDITED INVESTOR STATUS
   def approved_investor?
     investor_status == true
