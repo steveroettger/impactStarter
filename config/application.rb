@@ -54,7 +54,7 @@ module ImpactStarter
     config.active_record.whitelist_attributes = true
 
     # Enable the asset pipeline
-#    config.assets.initialize_on_precompile = false
+    config.assets.initialize_on_precompile = true
     config.assets.enabled = true
     config.assets.paths << "#{Rails.root}/app/assets/fonts" 
 
