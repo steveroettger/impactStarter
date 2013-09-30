@@ -21,4 +21,8 @@ class Project < ActiveRecord::Base
 
   filter_by :title, :description
   scope :featured, proc{ offset(rand(count)) }
+  
+  def project_approved?
+    status == "Published"
+  end
 end

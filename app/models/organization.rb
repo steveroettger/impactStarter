@@ -10,4 +10,8 @@ class Organization < ActiveRecord::Base
   validates :user_id, presence: true
 
   filter_by :name
+  
+  def organization_approved?
+    status == "Published"
+  end
 end
