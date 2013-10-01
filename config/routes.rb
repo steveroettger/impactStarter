@@ -33,5 +33,4 @@ ImpactStarter::Application.routes.draw do
   resources :activities
 
   resources :invitations
-
 end

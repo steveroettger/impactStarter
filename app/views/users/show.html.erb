@@ -1,7 +1,7 @@
 <% provide(:title, @user.full_name) %>
 
 <div id="profile-container">
-	
+
 	<div id="profile-main">
 		<div id="profile-header">
 			<% if @user == current_user %>
@@ -26,7 +26,7 @@
 			</div><!-- END #profile-header-content -->
 
 			<div class="clear"></div>
-			
+
 			<% unless current_user == @user %>
 			<div id="follow-form">
 				<% if current_user.following?(@user) %>
@@ -37,7 +37,7 @@
 			</div><!-- END #follow-form -->
 			<% end %>
 		</div><!-- END #profile-header -->
-		
+
 		<ul id="profile-buttons">
 			<li><a href="#" id="profile-overview" class="active">overview</a></li>
 			<li><a href="#" id="profile-activity">activity</a></li>
@@ -49,7 +49,7 @@
 				<% end %>
 			<% end %>
 		</ul><!-- END #profile-buttons -->
-			
+
 		<div id="overview">
 			<div id="users-overview">
 				<div class="profile-block">
@@ -66,7 +66,7 @@
 					</div><!-- END .profile-block-content -->
 				</div><!-- END .profile-block -->
 			</div><!-- END #users-overview -->
-			
+
 			<div id="projects-overview">
 				<div class="profile-block">
 					<div class="profile-block-content">
@@ -90,9 +90,9 @@
 					</div><!-- END .profile-block-content -->
 				</div><!-- END .profile-block -->
 			</div><!-- END #projects-overview  -->
-			
+
 		</div><!-- END #overview -->
-		
+
 		<div id="activity" class="hide">
 			<div class="profile-block">
 				<div class="profile-block-content">
@@ -110,11 +110,11 @@
 				</div><!-- END .profile-block-container -->
 			</div><!-- END .profile-block -->
 		</div><!-- END #activity -->
-		
+
 	</div><!-- END #profile-main -->
-		
+
 	<div id="profile-sidebar">
-		
+
 		<h2><a href="<%= following_user_path(@user) %>">Following (<%= @user.followed_users.count %>)</a></h2>
 		<ul>
 			<% @user.followed_users.first(5).each do |user| %>
@@ -131,7 +131,7 @@
 				<% end %>
 			<% end %>
 		</ul>
-		
+
 		<h2><a href="<%= followers_user_path(@user) %>">Followers (<span id="followers"><%= @user.followers.count %></span>)</a></h2>
 		<ul>
 			<% @user.followers.first(5).each do |user| %>
@@ -149,7 +149,11 @@
 			<% end %>
 		</ul>
 
-	</div><!-- END #profile-sidebar --> 
+		<% if @user == current_user %>
+			<h2><a href="<%= invitations_path %>">Open Invitations (<%= @user.invitations.active.count %>)</a></h2>
+		<% end %>
+
+	</div><!-- END #profile-sidebar -->
 
 </div><!-- END #profile-container -->
 

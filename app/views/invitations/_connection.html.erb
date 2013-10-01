@@ -5,7 +5,14 @@
     <% else -%>
       <img src="http://placehold.it/60x60" alt="<%= connection.full_name %>">
     <% end -%>
-    <a href="#"><%= connection.full_name %></a>
+    <strong><%= connection.full_name %></strong>
+    <% if connection.invited? && connection.invitation.invitee %>
+      <a class="btn pull-right" href="<%= user_path connection.invitee -%>">View Member</a>
+    <% elsif connection.invited? %>
+      <span class="label label-info pull-right">Invitation Pending</span>
+    <% else %>
+      <a class="btn pull-right" href="<%= new_invitation_path(invitation: {linkedin_id: connection.id, full_name: connection.full_name}) -%>">Invite</a>
+    <% end %>
     <p><%= connection.headline %></p>
     <div class="clear"></div>
   </div>

@@ -891,7 +891,7 @@ PROJECT STYLES
 					font-size:28px;
 					font-weight:lighter;
 				}
-				
+
 				a.project-edit {
 					position:absolute;
 					top:10px;
@@ -1331,4 +1331,8 @@ input[type="submit"].follow-pages-btn {
 	position:absolute;
 	top:40px;
 	right:60px;
+}
+
+textarea[name="invitation[message]"] {
+	height: 16em;
 }
