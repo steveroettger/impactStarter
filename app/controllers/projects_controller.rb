@@ -32,7 +32,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = current_user.projects.build(params[:project])
-    
+
     respond_to do |format|
       if @project.save
         @project.create_activity :create, owner: current_user, recipient: @project
@@ -70,10 +70,11 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project = Project.find(params[:id]).destroy
+    @project = Project.find(params[:id])
+    @project.create_activity :create, owner: current_user, recipient: @project
+    @project.destroy
 
     respond_to do |format|
-      @project.create_activity :create, owner: current_user, recipient: @project
       format.html { redirect_to projects_url }
       format.json { head :ok }
     end
