@@ -58,7 +58,7 @@ gem 'rmagick'
 gem 'carrierwave'
 
 # WILL_PAGINATE
-gem 'will_paginate'
+gem "will_paginate", "~> 3.0.5"
 gem 'bootstrap-will_paginate'
 
 group :development, :test do
