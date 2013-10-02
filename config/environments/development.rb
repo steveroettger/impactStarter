@@ -35,4 +35,8 @@ ImpactStarter::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # TODO change these to the development settings
+  ENV['LINKEDIN_TOKEN']  ||= '6t2vkgpeosel'
+  ENV['LINKEDIN_SECRET'] ||= 'c58tiXlEFFNZVPWn'
 end
