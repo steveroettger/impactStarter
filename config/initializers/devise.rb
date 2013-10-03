@@ -217,7 +217,7 @@ Devise.setup do |config|
   config.omniauth :linkedin,
                     ENV['LINKEDIN_TOKEN'],
                     ENV['LINKEDIN_SECRET'],
-                    scope: 'r_basicprofile r_emailaddress r_network',
+                    scope: 'r_basicprofile r_emailaddress r_network w_messages',
                     fields: %w[id email-address first-name last-name headline location picture-url public-profile-url connections]
 
   # ==> Warden configuration
