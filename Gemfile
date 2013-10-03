@@ -56,6 +56,7 @@ gem "meta_search"
 # FILE UPLOADS FOR IMAGES
 gem 'rmagick'
 gem 'carrierwave'
+gem 'fog'
 
 # WILL_PAGINATE
 gem "will_paginate", "~> 3.0.5"
