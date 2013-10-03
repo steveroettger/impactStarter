@@ -2,23 +2,15 @@
 	<div id="header-container">
     	<a href="/" id="logo"><img src="/assets/IS-logo.png" alt="ImpactStarter Social Impact Bonds" /></a>
 
-		<div id="top-nav">
-			<ul>
-				<li><a href="/about" class="border">Learn<br/><span class="smaller">about us</span></a></li>
-				<li><a href="" id="search-btn">Search<br/><span class="smaller">for projects</span></a></li>
-				<li><a href="/projects/new" >Start<br/><span class="smaller">a project</span></a></li>
-			</ul>
-		</div>
-
 		<div id="main-nav">
 	    	<ul>
+				<li class="border"><a href="/about">Learn</a></li>
+				<li class="border"><a href="" id="search-btn">Search</a></li>
+				<li class="border"><a href="/projects/new">Start</a></li>
 			<% if user_signed_in? %>
-				<li><%= link_to current_user.full_name, user_path(current_user) %></li>
-				<li class="divider">|</li>
+				<li class="border"><%= link_to current_user.full_name, user_path(current_user) %></li>
 				<li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
 			<% else %>
-				<li><%= link_to 'Join us', new_user_registration_path %></li>
-				<li class="divider">|</li>
 				<li><%= link_to 'Sign in', new_user_session_path %></li>
 			<% end %>
 		  	</ul>

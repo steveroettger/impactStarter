@@ -59,7 +59,6 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.update_attributes(params[:project])
-        @project.create_activity :create, owner: current_user, recipient: @project
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
         format.json { head :ok }
       else
@@ -71,7 +70,7 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project = Project.find(params[:id])
-    @project.create_activity :create, owner: current_user, recipient: @project
+    @project.create_activity :destroy, owner: current_user, recipient: @project
     @project.destroy
 
     respond_to do |format|

@@ -1,7 +1,8 @@
 class SiteController < ApplicationController
 
   def home
-    @project = Project.featured.first
+    #@project = Project.featured.first
+    @projects = Project.all
   end
 
   def about

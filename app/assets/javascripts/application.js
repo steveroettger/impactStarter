@@ -18,7 +18,15 @@
 //= require_tree .
 
 $(document).ready(function(){
-
+	
+	// HOME PAGE PROJECT OVERLAY
+	$(".project").hover(function(){
+		$(this).find(".project-overlay").fadeIn(400);
+	},
+	function(){
+		$(this).find(".project-overlay").fadeOut(100);
+	});
+	
 	// DROPDOWN SEARCH BAR
 	$("#search-btn").click(function(e){
 		e.preventDefault();

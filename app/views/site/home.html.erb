@@ -1,20 +1,14 @@
 <div id="home-featured">
 	<div id="hero-content">
-		<img src="/assets/home-featured-arrow.png" align="right" />
-		<h1>Harness the power<br>of private capital<br>for social good</h1>
+		<h1>A RENEWED VISION FOR A<br> FORGOTTEN CITY.</h1>
+		<%= link_to 'LEARN MORE', about_path, id: "learn-more" %>
 	</div>
-
-	<div id="home-featured-bar">
-		<h1>You Want To Make A Difference. We Want To Help.</h1>
-		<img src="/assets/home-main-arrow.png" id="home-main-arrow" />
-		<%= link_to 'Start A Project', new_project_path, id: 'start-project-btn' %>
-	</div><!-- END #home-featured-bar -->
 
 	<div class="clear"></div>
 </div><!-- END #home-featured -->
 
-<% if @project -%>
+<% if @projects -%>
 	<div id="home-project-container">
-		<%= render partial: '/projects/project', object: @project %>
+		<%= render partial: '/projects/project', object: @projects %>
 	</div><!-- END #home-project-container -->
 <% end %>
