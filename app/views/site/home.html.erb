@@ -9,6 +9,7 @@
 
 <% if @projects -%>
 	<div id="home-project-container">
-		<%= render partial: '/projects/project', object: @projects %>
+    <%= render partial: '/projects/project', collection: @projects %>
+    <div class="clear"></div>
 	</div><!-- END #home-project-container -->
 <% end %>

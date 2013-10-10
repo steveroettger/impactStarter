@@ -1,21 +1,15 @@
-<% @projects.each do |project| %>
-
-	<div class="project">
-		<div class="project-image">
-	    	<% if project.image_url :medium -%>
-		      <%= image_tag project.image_url :medium -%>
-		    <% else -%>
-		      <img src="http://placehold.it/300x300" />
-		    <% end -%>
-		</div>
-
-		<div class="project-overlay">
-	    	<h2><%= project.title -%></h2>
-		    <p><%= raw truncate(project.description, length: 100) -%></p>
-		    <%= link_to "Learn More &nbsp;&nbsp;&rarr;".html_safe, project_path(project), class: "learn-more" -%>
-	  	</div>
+<div class="project">
+	<div class="project-image">
+    	<% if project.image_url :medium -%>
+	      <%= image_tag project.image_url :medium -%>
+	    <% else -%>
+	      <img src="http://placehold.it/300x300" />
+	    <% end -%>
 	</div>
 
-<% end %>
-
-<div class="clear"></div>
+	<div class="project-overlay">
+    	<h2><%= project.title -%></h2>
+	    <p><%= raw truncate(project.description, length: 100) -%></p>
+	    <%= link_to "Learn More &nbsp;&nbsp;&rarr;".html_safe, project_path(project), class: "learn-more" -%>
+  	</div>
+</div>
