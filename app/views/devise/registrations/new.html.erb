@@ -2,21 +2,29 @@
 
 <div class="interior-container">
 	<legend>Create An Account</legend>
-	
-	<%- if devise_mapping.omniauthable? %>
-	  <%- resource_class.omniauth_providers.each do |provider| %>
-	    <%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), class: "btn btn-large", id: "linkedin-btn" %><br />
-	  <% end -%>
-	<% end -%>
-	
+	<% if resource.provider.nil? -%>
+    <%- if devise_mapping.omniauthable? %>
+      <%- resource_class.omniauth_providers.each do |provider| %>
+  			<%= link_to "Signup with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), class: "btn btn-large", id: "linkedin-btn" %><br />
+      <% end -%>
+    <% end -%>
+	<% else -%>
+		<% if resource.remote_image_url -%>
+			<%= image_tag resource.remote_image_url, style: 'max-width:185px; max-height:185px;' %>
+		<% end %>
+		<p>You will be able to login with your <%= resource.provider.to_s.titleize -%> account.</p>
+	<% end %>
+
 	<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
 		<%= devise_error_messages! %>
 
 		<%= f.input :first_name %>
 		<%= f.input :last_name %>
-	  	<%= f.input :email %>
-		<%= f.input :password %>
-		<%= f.input :password_confirmation %>
+	  <%= f.input :email %>
+	  <% if resource.provider.nil? -%>
+			<%= f.input :password %>
+			<%= f.input :password_confirmation %>
+		<% end %>
 
 		<%= f.button :submit, "Sign up", class: "btn" %>
 	<% end %>
