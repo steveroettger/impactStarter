@@ -1,9 +1,9 @@
 <div class="project">
 	<div class="project-image">
     	<% if project.image_url :medium -%>
-	      <%= image_tag project.image_url :medium -%>
+	      <a href="<%= project_path(project) %>"><%= image_tag project.image_url :medium -%></a>
 	    <% else -%>
-	      <img src="http://placehold.it/300x300" />
+	      <a href="<%= project_path(project) %>"><img src="http://placehold.it/300x300" /></a>
 	    <% end -%>
 	</div>
 
