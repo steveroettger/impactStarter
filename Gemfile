@@ -9,7 +9,6 @@ group :production do
   gem 'pg'
 end
 
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -61,6 +60,8 @@ gem 'fog'
 # WILL_PAGINATE
 gem "will_paginate", "~> 3.0.5"
 gem 'bootstrap-will_paginate'
+
+gem 'liquid'
 
 group :development, :test do
   # TESTING

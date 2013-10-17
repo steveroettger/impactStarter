@@ -1,19 +1,19 @@
 <%= simple_form_for(@invitation, html: { multipart: true, class: 'form-vertical' }) do |f| %>
   <%= f.hidden_field :linkedin_id %>
-  <% f.hidden_field :full_name %>
+  <%= f.hidden_field :full_name %>
   <% content_for :message do -%>
 <%= @invitation.full_name -%>,
 
 I'd like to collaborate with you on this great new site.
 
 Please sign up:
-<%= new_user_registration_url %>
+{{signup}}
 
 Thanks!
 <%= current_user.full_name %>
 
 <% end -%>
-  <%= f.input :message, input_html: { value: (yield :message), rows: 60 } %>
+  <%= f.input :message, input_html: { value: (yield :message if @invitation.message.blank?), rows: 60 } %>
 
   <%= f.button :submit, "Submit", class: "btn" %>
 <% end %>

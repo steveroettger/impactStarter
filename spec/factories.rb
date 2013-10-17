@@ -22,4 +22,11 @@ FactoryGirl.define do
   factory :organization do
     association :director, factory: :user
   end
+
+  factory :invitation do
+    association :owner, factory: :user
+    association :invitee, factory: :user
+    message '{{signup}}'
+  end
+
 end
