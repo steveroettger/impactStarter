@@ -104,7 +104,7 @@
 								<% @user.projects.each do |project| %>
 									<h4>
 										<%= link_to project.title, project %>
-										<% if @user == project.owner %>
+										<% if current_user == project.owner %>
 											<%= link_to "[ edit ]", edit_project_path(project), style: 'color:#333;' %>
 										<% end %>
 									</h4>
