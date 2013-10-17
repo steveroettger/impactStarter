@@ -1,12 +1,26 @@
-<div class="user-container">
-  <div class="user-item">
-    <% if user.image_url :thumb -%>
-      <img src="<%= user.image %>" alt="<%= user.full_name %>">
-    <% else -%>
-      <img src="http://placehold.it/60x60" alt="<%= user.full_name %>">
-    <% end -%>
-    <a href="<%= user_path(user) %>"><%= user.full_name %></a>
-    <p><%= user.headline %></p>
-    <div class="clear"></div>
-  </div>
-</div>
+<% if user.image? %>
+	<div class="user-item">
+		<img src="<%= user.image %>" align="left" alt="<%= user.full_name %>">
+		<a href="<%= user_path(user) %>"><%= user.full_name %></a>
+		<p><%= user.headline %></p>
+			
+		<% unless current_user == user %>
+			<%= link_to 'View Profile', user_path(user), class: 'view-profile-btn' %>
+		<% end %>
+	
+		<div class="clear"></div>
+	</div><!-- END .user-item -->
+<% else %>
+	<div class="user-item">
+		<img src="http://placehold.it/60x60" align="left" alt="<%= user.full_name %>">
+		<a href="<%= user_path(user) %>"><%= user.full_name %></a>
+		<p><%= user.headline %></p>
+
+		<% unless current_user == user %>
+			<%= link_to 'View Profile', user_path(user), class: 'view-profile-btn' %>
+		<% end %>
+			
+
+		<div class="clear"></div>
+	</div><!-- END .user-item -->
+<% end %>

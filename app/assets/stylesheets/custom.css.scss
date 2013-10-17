@@ -198,11 +198,14 @@ HOME
 #projects-search-container .project {
   float: left;
 }
+
 .projects_row .project:first-child {
   margin-right: 20px;
 }
+
 #home-search-container .project {
 }
+
 .projects_row {
 	clear:both;
 	margin: 25px 0;
@@ -695,6 +698,29 @@ ul#profile-edit li a.active {
 
 		p {
 			padding:8px 0 0 0;
+		}
+		
+		a.view-profile-btn {
+			position:absolute;
+			top:30px;
+			right:60px;
+			padding-top:10px;
+			width:157px;
+			height:30px;
+			display:inline-block;
+			font-size:13px;
+			text-align:center;
+			color:#ffffff;
+			background: #F9A231;
+			border:none;
+			-webkit-border-radius: 3px;
+			-moz-border-radius: 3px;
+			border-radius: 3px;
+		}
+
+		a.view-profile-btn:hover {
+			text-decoration:none; 
+			background:#FCB34C;
 		}
 	}
 }
@@ -1230,6 +1256,7 @@ a#linkedin-btn:hover { background: rgba(72, 117, 180, 0.9); }
 	}
 }
 
+/*
 input[type="submit"].follow-btn, input[type="submit"].follow-pages-btn {
 	padding-top:5px;
 	width:157px;
@@ -1257,6 +1284,7 @@ input[type="submit"].follow-pages-btn {
 	top:40px;
 	right:60px;
 }
+*/
 
 textarea[name="invitation[message]"] {
 	height: 16em;

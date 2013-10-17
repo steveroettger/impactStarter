@@ -7,6 +7,7 @@
 
 <div id="project-form-container">
 	<div id="project-form-details">
+		<h4>Project Details</h4>
 		<%= simple_form_for(@project, html: { multipart: true, class: 'form-vertical' }) do |f| %>
 			<%= f.input :title %>
 			<%= f.input :seeking_amount, label: "Seeking Amount" %>
