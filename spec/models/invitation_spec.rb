@@ -4,6 +4,7 @@ describe Invitation do
   before do
     @invitation = build :invitation, message: nil
   end
+
   describe "message" do
     it "should require signup link" do
       expect(@invitation.valid?).to eq(false)

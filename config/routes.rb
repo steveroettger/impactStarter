@@ -32,5 +32,5 @@ ImpactStarter::Application.routes.draw do
   # PUBLIC ACTIVITY
   resources :activities
 
-  resources :invitations
+  resources :invitations, only: [:index, :new, :create, :show]
 end

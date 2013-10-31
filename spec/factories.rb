@@ -25,8 +25,7 @@ FactoryGirl.define do
 
   factory :invitation do
     association :owner, factory: :user
-    association :invitee, factory: :user
+    linkedin_id "in-id"
     message '{{signup}}'
   end
-
 end

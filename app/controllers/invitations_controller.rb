@@ -1,5 +1,5 @@
 class InvitationsController < ApplicationController
-  before_filter :auth_user
+  before_filter :auth_user, except: :show
 
   def index
     @connections = Connection.convert current_user, linkedin_client.connections.all
@@ -19,15 +19,33 @@ class InvitationsController < ApplicationController
   end
 
   def create
-    @invitation = current_user.invitations.build params[:invitation]
     respond_to do |format|
-      if @invitation.save
+      if create_invitation
         format.html { redirect_to invitations_path, notice: 'Invitation was successfully created.' }
         format.json { render json: @invitation, status: :created, location: @invitation }
       else
         format.html { render action: "new" }
         format.json { render json: @invitation.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def show
+    if invitation = Invitation.unaccepted.where(public_id: params[:id]).first
+      session['registration.invitation_id'] = invitation.id
+    else
+      flash[:warning] = "Sorry, that invitation is not valid"
+    end
+    redirect_to new_user_registration_path
+  end
+
+  private
+  def create_invitation
+    @invitation = current_user.invitations.build params[:invitation]
+    if @invitation.save
+      return true
+    elsif @invitation.public_id_taken?
+      return create_invitation
     end
   end
 

@@ -57,6 +57,8 @@ gem 'rmagick'
 gem 'carrierwave'
 gem 'fog'
 
+gem 'base32-crockford'
+
 # WILL_PAGINATE
 gem "will_paginate", "~> 3.0.5"
 gem 'bootstrap-will_paginate'
