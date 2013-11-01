@@ -8,4 +8,5 @@
     </div>
   <% end -%>
   <%= render partial: 'connection', collection: @connections %>
+  <%= will_paginate @connections %>
 </div>

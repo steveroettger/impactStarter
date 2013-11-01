@@ -1,8 +1,11 @@
+require "will_paginate/array"
+
 class InvitationsController < ApplicationController
   before_filter :auth_user, except: :show
 
   def index
-    @connections = Connection.convert current_user, linkedin_client.connections.all
+    c = linkedin_client.connections.all
+    @connections = Connection.convert(current_user, c).paginate per_page: 10, page: params[:page]
 
     respond_to do |format|
       format.html # index.html.erb
