@@ -7,7 +7,7 @@
     <% end -%>
     <strong><%= connection.full_name %></strong>
     <% if connection.invited? && connection.invitation.invitee %>
-      <a class="btn pull-right" href="<%= user_path connection.invitee -%>">View Member</a>
+      <a class="btn pull-right" href="<%= user_path connection.invitation.invitee -%>">View Member</a>
     <% elsif connection.invited? %>
       <span class="label label-info pull-right">Invitation Pending</span>
     <% else %>

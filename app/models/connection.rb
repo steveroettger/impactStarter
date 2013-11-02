@@ -15,6 +15,10 @@ class Connection
     !invitation.nil?
   end
 
+  def accepted?
+    invitation and invitation.accepted_at?
+  end
+
   def invitation
     @invitation ||= user.invitations.detect{ |i| i.linkedin_id == id }
   end
@@ -29,7 +33,9 @@ class Connection
       c.user = user
       c
     end
-    unsorted.compact.sort_by{|c| [c.invited?, c.last_name, c.first_name].join(' ') }
+    unsorted.compact.sort_by do |c|
+      [c.invited? ? c.accepted? ? '3' : '2' : '1', c.last_name, c.first_name].join(' ')
+    end
   end
 
   def full_name
