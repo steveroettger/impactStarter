@@ -11,18 +11,20 @@
 <%= render 'layouts/header' %>
 
 <div id="wrapper">
-	
-	<% flash.each do |name, msg| %>
-		<div class="alert alert-<%= name == :notice ? "success" : "error" %>">
-		    <a class="close" data-dismiss="alert">×</a>
-		    <%= msg %>
+
+	<% flash.each_with_index do |(name, msg), i| %>
+		<div class="alert alert-<%= name == :notice ? "success" : "error" %> alert-<%= i %>">
+		    <div class="message">
+          <a class="close" data-dismiss="alert" data-target=".alert-<%= i %>">×</a>
+		      <%= msg %>
+        </div>
 		</div>
 	<% end %>
-		
+
 	<%= yield %>
-	
+
 </div><!-- END #wrapper -->
-	
+
 
 <%= render 'layouts/footer' %>
 

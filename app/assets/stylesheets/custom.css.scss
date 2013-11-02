@@ -91,7 +91,7 @@ HEADER
 
 			}
 		}
-		
+
 		#main-nav ul li.border { padding-right:15px; border-right:1px solid $white; }
 	}
 }
@@ -223,7 +223,7 @@ HOME
 	border-right:2px solid #EDEDED;
 	border-bottom:2px solid #EDEDED;
 	border-left:1px solid #EDEDED;
-	
+
 	.project-image {}
 
 	.project-overlay {
@@ -258,7 +258,7 @@ HOME
 	}
 }
 
-.project:nth-child(3n+3) {  
+.project:nth-child(3n+3) {
 	margin-right:0;
 }
 
@@ -699,7 +699,7 @@ ul#profile-edit li a.active {
 		p {
 			padding:8px 0 0 0;
 		}
-		
+
 		a.view-profile-btn {
 			position:absolute;
 			top:30px;
@@ -719,7 +719,7 @@ ul#profile-edit li a.active {
 		}
 
 		a.view-profile-btn:hover {
-			text-decoration:none; 
+			text-decoration:none;
 			background:#FCB34C;
 		}
 	}
@@ -1228,7 +1228,15 @@ textarea.text {
 /*--------------------------------------------
 MISC
 ---------------------------------------------*/
-#wrapper .alert { margin-bottom: 0px; }
+#wrapper .alert {
+	margin-bottom: 0px;
+	padding:8px 0;
+}
+#wrapper .alert .message {
+	margin:0 auto;
+	padding:0;
+	width:960px;
+}
 
 a#linkedin-btn { margin-bottom:20px; color:#ffffff; text-shadow:1px 1px 1px $black; background:#4875B4; border:1px solid #AAA; }
 
