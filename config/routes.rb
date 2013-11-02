@@ -33,4 +33,8 @@ ImpactStarter::Application.routes.draw do
   resources :activities
 
   resources :invitations, only: [:index, :new, :create, :show]
+
+  # Catch-all to allow proper HTTP responses for 405 and 501
+  match "*route_not_found.:format", :to => "application#route_not_found"
+  match "*route_not_found",         :to => "application#route_not_found"
 end

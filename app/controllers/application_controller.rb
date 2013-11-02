@@ -1,12 +1,16 @@
+require "error_response_actions"
+
 class ApplicationController < ActionController::Base
-  #include PublicActivity::StoreController
-  
+
   protect_from_forgery
-  
-  def auth_user
-    unless user_signed_in? 
-      redirect_to root_path, alert: "You need to sign in or sign up before continuing."
-    end
+
+  include ErrorResponseActions
+  # rescue_from CanCan::AccessDenied, :with => :authorization_error
+  rescue_from ActiveRecord::RecordNotFound, :with => :resource_not_found
+
+  private
+
+  def authenticate!
+    current_user || devise_controller? || ( authentication_error and return false )
   end
-  
 end

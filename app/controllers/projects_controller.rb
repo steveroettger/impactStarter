@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_filter :auth_user, only: [:new, :edit, :update, :destroy]
+  before_filter :authenticate!, only: [:new, :edit, :update, :destroy]
 
   def index
     @projects = params[:search] ? Project.filter(params[:search]) : Project.all

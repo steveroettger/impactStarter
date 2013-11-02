@@ -1,14 +1,14 @@
 require "will_paginate/array"
 
 class InvitationsController < ApplicationController
-  before_filter :auth_user, except: :show
+  before_filter :authenticate!, except: :show
 
   def index
     c = linkedin_client.connections.all
     @connections = Connection.convert(current_user, c).paginate per_page: 10, page: params[:page]
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @connections }
     end
   end
@@ -16,7 +16,7 @@ class InvitationsController < ApplicationController
   def new
     @invitation = current_user.invitations.build params[:invitation]
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @connections }
     end
   end
@@ -43,6 +43,7 @@ class InvitationsController < ApplicationController
   end
 
   private
+
   def create_invitation
     @invitation = current_user.invitations.build params[:invitation]
     if @invitation.save
