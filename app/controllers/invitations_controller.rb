@@ -4,8 +4,11 @@ class InvitationsController < ApplicationController
   before_filter :authenticate!, except: :show
 
   def index
-    c = linkedin_client.connections.all
-    @connections = Connection.convert(current_user, c).paginate per_page: 10, page: params[:page]
+    c = ConnectionList.collate(current_user.invitations,
+                               linkedin_client ? linkedin_client.connections.all : [])
+
+    @connections = c.uninvited.concat(c.unaccepted).concat(c.accepted)
+    @connections = @connections.to_a.paginate per_page: 10, page: params[:page]
 
     respond_to do |format|
       format.html
@@ -54,7 +57,7 @@ class InvitationsController < ApplicationController
   end
 
   def linkedin_client
-    unless @linkedin_client
+    if session["linkedin.access"].present? && @linkedin_client.nil?
       @linkedin_client = LinkedIn::Client.new
       @linkedin_client.authorize_from_access session["linkedin.access"][:token],
                                              session["linkedin.access"][:secret]
