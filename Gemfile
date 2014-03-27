@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.14'
+gem 'rails', '3.2.17'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -25,7 +25,7 @@ end
 
 # need this version of jquery-rails or activeadmin blows-up with:
 #  Sprockets::FileNotFound ... couldn't find file 'jquery-ui'
-gem "jquery-rails", "2.3.0"
+gem 'jquery-rails', '2.3.0'
 
 # USER AUTHENTICATION
 gem 'devise'
@@ -49,18 +49,18 @@ gem 'truncate_html'
 gem "cocoon"
 
 # ACTIVE ADMIN SECTION
-gem 'activeadmin'
+gem 'activeadmin', '0.6.0'
 gem "meta_search"
 
 # FILE UPLOADS FOR IMAGES
 gem 'rmagick'
-gem 'carrierwave'
+gem 'carrierwave', '0.9.0' # 0.10.0 causes a bunch of warnings
 gem 'fog'
 
 gem 'base32-crockford'
 
 # WILL_PAGINATE
-gem "will_paginate", "~> 3.0.5"
+gem "will_paginate"
 gem 'bootstrap-will_paginate'
 
 gem 'liquid'

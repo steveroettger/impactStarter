@@ -220,6 +220,8 @@ Devise.setup do |config|
                     scope: 'r_basicprofile r_emailaddress r_network w_messages',
                     fields: %w[id email-address first-name last-name headline location picture-url public-profile-url connections]
 
+  config.secret_key = '7bf3e6428fb30ca1c0dcdc6d6e0f8bb0058998bceb7ee57be22c79d2bf642317886498e1a5849bdb5eea8db2a3f8c47aa582ca544ea235d0363e244752c32a87'
+
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
